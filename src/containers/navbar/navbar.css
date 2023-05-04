@@ -1,0 +1,17 @@
+.navbar_container{
+        /* ff 3.6+ */
+        background:-moz-radial-gradient(circle at 2% 95%, rgba(113, 42, 6, 1) 0%, rgba(103, 38, 4, 1) 22%, rgba(30, 19, 0, 1) 100%);
+
+        /* safari 5.1+,chrome 10+ */
+        background:-webkit-radial-gradient(circle at 2% 95%, rgba(113, 42, 6, 1) 0%, rgba(103, 38, 4, 1) 22%, rgba(30, 19, 0, 1) 100%);
+
+        /* opera 11.10+ */
+        background:-o-radial-gradient(circle at 2% 95%, rgba(113, 42, 6, 1) 0%, rgba(103, 38, 4, 1) 22%, rgba(30, 19, 0, 1) 100%);
+
+        /* ie 10+ */
+        background:-ms-radial-gradient(circle at 2% 95%, rgba(113, 42, 6, 1) 0%, rgba(103, 38, 4, 1) 22%, rgba(30, 19, 0, 1) 100%);
+
+        /* global 92%+ browsers support */
+        background:radial-gradient(circle at 2% 95%, rgba(113, 42, 6, 1) 0%, rgba(103, 38, 4, 1) 22%, rgba(30, 19, 0, 1) 100%);
+
+}
