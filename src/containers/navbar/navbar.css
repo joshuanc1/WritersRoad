@@ -1,17 +1,115 @@
 .navbar_container{
-        /* ff 3.6+ */
-        background:-moz-radial-gradient(circle at 2% 95%, rgba(113, 42, 6, 1) 0%, rgba(103, 38, 4, 1) 22%, rgba(30, 19, 0, 1) 100%);
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem 3rem 2rem 3rem;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left:0;
+        background: linear-gradient(black, transparent);
+        height: 200px;
+}
 
-        /* safari 5.1+,chrome 10+ */
-        background:-webkit-radial-gradient(circle at 2% 95%, rgba(113, 42, 6, 1) 0%, rgba(103, 38, 4, 1) 22%, rgba(30, 19, 0, 1) 100%);
+.navbar_container-logo{
+        display: flex;
+}
+.navbar-logo{
+        max-width: 150px;
+        height: auto;
+}
 
-        /* opera 11.10+ */
-        background:-o-radial-gradient(circle at 2% 95%, rgba(113, 42, 6, 1) 0%, rgba(103, 38, 4, 1) 22%, rgba(30, 19, 0, 1) 100%);
+.navbar_title{
+        padding-top: 2.5rem;
+        color: var(--whitesmoke-color);
+        margin-left: 10px;
+}
+.navbar_page-links{
+        padding-top: 3rem;
+        display: flex;
+        justify-content: space-evenly;
+        flex:1;
+}
 
-        /* ie 10+ */
-        background:-ms-radial-gradient(circle at 2% 95%, rgba(113, 42, 6, 1) 0%, rgba(103, 38, 4, 1) 22%, rgba(30, 19, 0, 1) 100%);
 
-        /* global 92%+ browsers support */
-        background:radial-gradient(circle at 2% 95%, rgba(113, 42, 6, 1) 0%, rgba(103, 38, 4, 1) 22%, rgba(30, 19, 0, 1) 100%);
+.burger{
+        color: var(--whitesmoke-color);
+        height: 75px;
+        flex-shrink:0;
+}
 
+.navbar_link{
+        color: var(--whitesmoke-color);
+}
+
+.navbar_sign-links{
+        margin-bottom: 22px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+}
+
+.navbar_sign-links>button{
+        height: 50px;
+        width: 125px;
+        border-radius: 10px;
+        background: white;
+        border: none;
+        font-size: 1rem;
+
+}
+
+.navbar_menu-container{
+        display: none;
+        flex-direction: row-reverse;
+        margin-top: 15px;
+        height: 300px;
+}
+.navbar_menu-links{
+        background: black;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        gap: 10px;
+        justify-content: space-evenly;
+        right: 0;
+}
+
+
+@media screen and (max-width: 1050px) {
+        .navbar_page-links{
+            display: none;
+        }
+
+
+        .navbar_sign-links{
+                display: none;
+        }
+
+        .navbar_menu-container{
+            display: flex;
+        }
+        .navbar_container-logo{
+                width: auto;
+        }
+
+}
+
+@media screen and (max-width: 750px) {
+        .navbar_container-logo{
+                width: 100px;
+        }
+        
+}
+
+@media screen and (max-width: 480px) {
+        .navbar_container-logo{
+                width: 50px;
+                
+        }
+        .navbar_container-logo img{
+                display: none;     
+        }
+        
+        
 }

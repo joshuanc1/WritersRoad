@@ -1,11 +1,14 @@
 import {Genre, Header, Footer, Navbar} from './containers';
-import {Home, MyBooks, Reviews, Search, Login, Signup} from './components';
+import {Home, MyBooks, Reviews, Search, Login, Signup, Profile} from './components';
 import './App.css';
 import {Route, Routes, useHistory} from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 
 function App() {
+
+
   return (
     <div className="App">
       <Navbar>

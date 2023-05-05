@@ -1,0 +1,52 @@
+.header_container{
+    background-image: url(../../assets/inaki-del-olmo-NIJuEQw0RKg-unsplash.jpg);
+    background-size: contain;
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem 3rem 0 3rem;
+    max-width: 100%;
+    height: 1000px;
+    overflow: scroll;
+}
+
+@media screen and (max-width: 1500px) {
+    .header_container{
+        background-size: cover;
+    }
+}
+
+
+.header_container-card{
+    margin: 200px 0 100px;
+    width: 100vw;
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.header-card-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2rem;
+    flex:0.75;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.header-card-info>h2{
+    font-size: 4rem;
+}
+
+.header-card-author{
+    background: var(--whitesmoke-color);
+    flex:1;
+}
+
+.header-card-info>button{
+    height: 50px;
+    width: 125px;
+    border-radius: 10px;
+    background: white;
+    border: none;
+    font-size: 1rem;
+}
