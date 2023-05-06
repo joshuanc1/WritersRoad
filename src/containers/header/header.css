@@ -5,7 +5,8 @@
     justify-content: space-between;
     padding: 5rem 3rem 0 3rem;
     max-width: 100%;
-    height: 1000px;
+    height: 100vh;
+    max-height: 75vh;
     overflow: scroll;
 }
 
@@ -40,13 +41,40 @@
 .header-card-author{
     background: var(--whitesmoke-color);
     flex:1;
+    display: flex;
+    
 }
 
 .header-card-info>button{
     height: 50px;
     width: 125px;
     border-radius: 10px;
-    background: white;
+    background-color: var(--whitesmoke-color);
     border: none;
     font-size: 1rem;
 }
+
+.header-card-img{
+    max-width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 4rem 2rem 1rem 2rem;
+    
+}
+.header-card-img>img{
+    width: 100%;
+   
+  
+}
+
+.header-card-author-info{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    flex:1;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
