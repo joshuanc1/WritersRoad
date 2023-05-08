@@ -1,0 +1,100 @@
+.genre_title-cards{
+    text-align: center;
+    height: 400px;
+    font-size: 2.5rem;
+    padding-top: 8rem;
+    
+}
+
+.genre_carousel-outer-container {
+    padding-top: 3rem;
+    background: black;
+    height: 1000px;
+    display: flex;
+    padding-left: 1000px;
+
+}
+
+
+.genre_carousel-inner-container{
+    height: auto;
+    margin: 5rem;
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    /*transform: translate(0%, -10%);
+    position: absolute;
+    left: 50%;*/
+}
+
+
+
+.genre-card-container{
+    background: transparent;
+    color: whitesmoke;
+    max-height: 100%;
+    font-size: 1.3rem;
+    background: black;
+}
+
+.genre-card-img{
+    width: 50vmin;
+    height: 70vmin;
+    object-fit: cover;
+    object-position: center;
+}
+
+.genre_title-nav{
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+
+@media screen and (max-width: 1500px) {
+    .genre_carousel-outer-container{
+        padding-left: 400px;
+    }
+    .genre_title-cards{
+        font-size: 2rem;
+        height:400px;
+        padding-top: 6rem;
+        
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .genre_carousel-outer-container{
+        padding-left: 50px;
+    }
+    .genre_title-cards{
+        font-size: 1.25rem;
+        height:300px;
+        padding-top: 4rem;
+        
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .genre_carousel-outer-container{
+        padding-left: 0px;
+    }
+    .genre_title-cards{
+        font-size: 1rem;
+        height: 250px;
+    }
+}
+
+#cursor{
+    background-color: whitesmoke;
+    height: 50px;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    display: none;
+}

@@ -10,12 +10,6 @@
     overflow: scroll;
 }
 
-@media screen and (max-width: 1500px) {
-    .header_container{
-        background-size: cover;
-    }
-}
-
 
 .header_container-card{
     margin: 200px 0 100px;
@@ -39,9 +33,9 @@
 }
 
 .header-card-author{
-    background: var(--whitesmoke-color);
     flex:1;
     display: flex;
+    background: var(--whitesmoke-color);
     
 }
 
@@ -60,10 +54,13 @@
     display: flex;
     align-items: center;
     padding: 4rem 2rem 1rem 2rem;
-    
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 1.25rem;
 }
 .header-card-img>img{
     width: 100%;
+    max-height: 325px;
    
   
 }
@@ -71,10 +68,61 @@
 .header-card-author-info{
     display: flex;
     flex-direction: column;
-    background-color: red;
     flex:1;
     justify-content: space-evenly;
     align-items: center;
+    font-size: 1.25rem;
+    padding: 1rem 2rem 1rem 2rem;
+    background: black;
+    color: var(--whitesmoke-color);
+}
+
+
+@media screen and (max-width: 1500px) {
+    .header_container{
+        background-size: cover;
+    }
+    .header-card-info > h2{
+        font-size: 3rem;
+    }
+    .header_container-card > * > *{
+        font-size: 1rem;
+    }
+    .header-card-author-info>:last-child{
+        display: none;
+    }
+
+}
+
+
+@media screen and (max-width: 1000px) {
+    .header_container-card > * > *{
+        font-size: 1rem;
+    }
+    .header-card-img{
+        display: none;
+    }
+    .header-card-info > h2{
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header_container-card > * > *{
+        font-size: .8rem;
+        
+    }
+    .header-card-author{
+        display: none;
+    }
+    .header_container-card{
+        margin-top: 5rem;
+        height: fit-content;
+        display: block;
+    }
+    .header-card-info{
+        gap:7px;
+    }
 
 }
 

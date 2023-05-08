@@ -17,13 +17,14 @@ const Header = () => {
 
         <div className="header-card-author">
           <div className="header-card-img">
+            <h2>You don't have to embark on the journey alone.</h2>
             <img id="header-img" src={img} alt="header-img" />
           </div>
           <div className="header-card-author-info">
-            <h2>Joshua Chu</h2>
-            <p>Aspiring Writer</p>
-            <p>Video Game Nerd</p>
-            <p>Obsessed Developer</p>
+            <h2>Welcome to Writer's Road!</h2>
+            <p>This is a place where you can share ideas, insight, and connect with others who have the burning desire to have thei stories be told to the world.</p>
+            <p>Joins book clubs, read short stories, blog about your favorite books/authors.</p>
+            <p>"I was struggling to get over writer's block, and what I ended up needing was a support system of others who are and have experienced similar situations." - Joshua Chu</p>
           </div>
         </div>
       </div>
