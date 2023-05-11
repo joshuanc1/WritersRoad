@@ -1,0 +1,49 @@
+.register_container{
+    display: flex;
+    justify-content: center;
+}
+
+
+.register_container form{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100vh;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.register_container label{
+    padding: 0
+}
+
+.register_container h2{
+    align-self: center;
+    font-size: 2rem;
+}
+
+.register_container p{
+    color: grey;
+    padding: 0 3rem;
+}
+.register_container input{
+    font-size: 1.2rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: lightgray;
+    padding: 1.2rem 0;
+    
+}
+
+.register_container input:focus {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: black;
+    outline: none;
+}
+
+.register_button {
+    height: 5%
+}

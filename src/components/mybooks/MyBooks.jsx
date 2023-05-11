@@ -3,7 +3,7 @@ import './mybooks.css'
 
 const MyBooks= () => {
   return (
-    <div>MyBookshelf</div>
+    <div></div>
   )
 }
 

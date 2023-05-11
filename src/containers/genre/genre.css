@@ -1,18 +1,19 @@
 .genre_title-cards{
     text-align: center;
     height: 400px;
-    font-size: 2.5rem;
-    padding-top: 8rem;
-    
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 2rem;
 }
 
 .genre_carousel-outer-container {
     padding-top: 3rem;
     background: black;
-    height: 1000px;
+    height: 90vh;
     display: flex;
-    padding-left: 1000px;
-
+    align-items: center;
 }
 
 
@@ -22,9 +23,7 @@
     display: flex;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
-    /*transform: translate(0%, -10%);
-    position: absolute;
-    left: 50%;*/
+    margin-left: calc(100vw / 2);
 }
 
 
@@ -54,36 +53,40 @@
 
 
 @media screen and (max-width: 1500px) {
-    .genre_carousel-outer-container{
-        padding-left: 400px;
-    }
     .genre_title-cards{
-        font-size: 2rem;
+        font-size: 1.8rem;
         height:400px;
-        padding-top: 6rem;
+        padding-top: 3rem;
         
     }
 }
 
 @media screen and (max-width: 750px) {
-    .genre_carousel-outer-container{
-        padding-left: 50px;
-    }
     .genre_title-cards{
         font-size: 1.25rem;
         height:300px;
-        padding-top: 4rem;
-        
+        padding: 2rem;
     }
+    .genre_title-nav{
+        font-size: 16px;
+    }
+    .genre_carousel-outer-container {
+        height: 600px;
+    }
+
 }
 
-@media screen and (max-width: 400px) {
-    .genre_carousel-outer-container{
-        padding-left: 0px;
-    }
+
+@media screen and (max-width: 360px) {
     .genre_title-cards{
         font-size: 1rem;
         height: 250px;
+    }
+    .genre_carousel-outer-container {
+        height: 400px;
+    }
+    .genre_carousel-inner-container{
+        margin: 0 50px;
     }
 }
 

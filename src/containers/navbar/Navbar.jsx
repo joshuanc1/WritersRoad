@@ -29,8 +29,8 @@ const Navbar = () => {
         <Menu/>
       </div>
       <div className="navbar_sign-links">
-        <li><Link className="navbar_link" to="/login">LOG IN</Link></li>
-        <button><Link className="navbar_link-button" to="/signup">SIGN UP</Link></button>
+        <li><Link className="navbar_link" to="/users/login">LOG IN</Link></li>
+        <button><Link className="navbar_link-button" to="/users/register">SIGN UP</Link></button>
       </div>
       <div className="navbar_menu-container">
         {toggleMenu 
@@ -43,8 +43,8 @@ const Navbar = () => {
           <Menu/>
         </div>
         <div className="navbar_menu-sign-links">
-          <li><Link className="navbar_link" to="/login">Sign in</Link></li>
-          <button><Link className="navbar_link-button" to="/signup">Sign up</Link></button>
+          <li><Link className="navbar_link" to="/users/login">Sign in</Link></li>
+          <button><Link className="navbar_link-button" to="/users/register">Sign up</Link></button>
         </div>
       </div>
       )}

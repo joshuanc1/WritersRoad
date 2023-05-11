@@ -1,8 +1,7 @@
-import {Genre, Header, Footer, Navbar} from './containers';
-import {Home, MyBooks, Reviews, Search, Login, Signup, Profile} from './components';
+import {Navbar} from './containers';
+import {Home, MyBooks, Reviews, Search, Login, Signup} from './components';
 import './App.css';
-import {Route, Routes, useHistory} from 'react-router-dom';
-import { useEffect } from 'react';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 
 
@@ -10,21 +9,21 @@ function App() {
 
 
   return (
+
     <div className="App">
-      <Navbar>
+      <Router>
+        <Navbar/>
         <Routes>
-          <Route exact path="/" component={Home}/>
-          <Route path="/search" component={Search}/>
-          <Route path="/books" component={MyBooks} />
-          <Route path="/reviews" component={Reviews} />
-          <Route path="/login" component={Login} />
-          <Route path='/signup'component={Signup} />
+          <Route path="/" element={<Home />}/>
+          <Route path="/search" element={<Search />}/>
+          <Route path="/books" element={<MyBooks />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/users/login" element={<Login />} />
+          <Route path='/users/register' element={<Signup/>} />
         </Routes>
-      </Navbar>
-      <Header></Header>
-      <Genre></Genre>
-      <Footer></Footer>
+      </Router>
     </div>
+    
   );
 }
 
