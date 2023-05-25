@@ -1,0 +1,12 @@
+
+20230525	16:15:34	6bb9531b-7d5e-4f96-95ab-4cc5a8064c83	Unexpected string in JSON at position 27	SyntaxError: Unexpected string in JSON at position 27
+    at JSON.parse (<anonymous>)
+    at parse (/Users/joshuachu/Documents/React Folder/Practice/writers/server/node_modules/body-parser/lib/types/json.js:89:19)
+    at /Users/joshuachu/Documents/React Folder/Practice/writers/server/node_modules/body-parser/lib/read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:203:9)
+    at invokeCallback (/Users/joshuachu/Documents/React Folder/Practice/writers/server/node_modules/raw-body/index.js:231:16)
+    at done (/Users/joshuachu/Documents/React Folder/Practice/writers/server/node_modules/raw-body/index.js:220:7)
+    at IncomingMessage.onEnd (/Users/joshuachu/Documents/React Folder/Practice/writers/server/node_modules/raw-body/index.js:280:7)
+    at IncomingMessage.emit (node:events:525:35)
+    at endReadableNT (node:internal/streams/readable:1358:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)

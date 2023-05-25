@@ -16,14 +16,14 @@ const Genre = () => {
     {type: 'Children', url: animated}
   ]);
   
-  const cursorChange = (e) => {
+  /*const cursorChange = (e) => {
       const blob = document.getElementById("cursor");
       const { clientX, clientY } = e;
       blob.style.display = 'inline';
 
       blob.style.left = `${clientX}px`;
       blob.style.top = `${clientY}px`;
-  }
+  }*/
 
 
 
@@ -37,7 +37,7 @@ const Genre = () => {
           <p>LEARN MORE</p>
         </div>
       </div>
-      <div className= 'genre_carousel-outer-container' onPointerMove={e=> cursorChange(e)}>
+      <div className= 'genre_carousel-outer-container'>
         <div id="cursor"></div>
         <div className='genre_carousel-inner-container'>
           {genreList.map(img => <GenreCard key={img} img={img}></GenreCard>)}

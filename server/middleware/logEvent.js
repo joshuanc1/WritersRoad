@@ -6,7 +6,8 @@ const {v4: uuid} = require('uuid');
 
 exports.loggerEvent = async(message, logName) => {
     let dateNow = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`;
-    let logItem = `${dateNow}\t${uuid}\t${message}\n`;
+    console.log(uuid);
+    let logItem = `${dateNow}\t${uuid()}\t${message}\n`;
     try{
         if(!fs.existsSync(path.join(__dirname, "..", "logs"))){
             await fsPromises.mkdir(path.joins(__dirname, "..", "logs"));
@@ -18,6 +19,6 @@ exports.loggerEvent = async(message, logName) => {
 }
 
 exports.logger = async(req, res, next) => {
-    this.loggerEvent(`${req.method}\t${req.header.origin}\t${req.url}`, 'requestLog.txt');
+    this.loggerEvent(`${req.method}\t${req.headers.origin}\t${req.url}`, 'requestLog.txt');
     next();
 }

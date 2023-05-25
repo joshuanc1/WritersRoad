@@ -1,7 +1,7 @@
-const loggerEvent = require('./logEvent');
+const {loggerEvent} = require('./logEvent');
 
 const errorEvent = async (err, req, res, next) => {
-    loggerEvent(`${err.message}\t${err.stack}`, 'errorLog.txt');
+    loggerEvent(`${err.message}\t${err.stack}`, 'errorLogs.txt');
     res.status(500).send(err.message);
 }
 
