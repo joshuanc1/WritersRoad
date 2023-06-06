@@ -1,13 +1,22 @@
 import React, { useState } from 'react'
 import './search.css';
 import { FaSearch } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSearchedBooks } from '../../actions/searchActions';
+import Book from '../Book/Book';
 
 
 const Search = () => {
+    const dispatch = useDispatch();
     const [searchWord, setSearchWord] = useState("");
+    const {books, loading} = useSelector(state => state.books);
 
-    const handleSearch = () => {
-        
+   
+  
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        dispatch(getSearchedBooks(searchWord));
     }
   return (
     <>
@@ -23,6 +32,17 @@ const Search = () => {
                     </button>
                 </form>
             </div>
+        </div>
+        <div className='search_container-books'>
+                                                        
+            {books ?
+                books.map((book)=> {
+                    <Book key={book.id} book={book}/>
+                })
+            :
+                <p>POOP</p>
+            }
+
         </div>
     </>
   )

@@ -4,19 +4,17 @@ const bookSchema = new mongoose.Schema({
     title: {
         type: String,
     },
-    subtitle: {
-        type: String,
-    },
+    
     author: {
         type: String,
     },
     isbn: {
         type: [String],
     },
-    url: {
-        type: String,
+    pages: {
+        type: Number,
     },
-    publishedDate:{
+    published_date:{
         type: String,
     },
     cover:{

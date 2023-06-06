@@ -26,8 +26,10 @@ if(process.env.NODE_ENV != 'production'){
 
 
 const userRouter = require('./routes/userRoute');
+const searchRouter = require('./routes/booksRoute');
 
 app.use('/user', userRouter);
+app.use('/search', searchRouter);
 
 
 

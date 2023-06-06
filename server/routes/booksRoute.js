@@ -1,8 +1,10 @@
 const express = require('express');
-const { findBook } = require('../controllers/bookController');
+const { findBooks } = require('../controllers/bookController');
 
 const router = express();
 
 
-router.route('/search/books').get();
-router.route('/search/books/:isbn').get(findBook);
+router.route('/books').get();
+router.route('').get(findBooks);
+
+module.exports = router;
