@@ -1,5 +1,1 @@
-20230525	16:13:04	efa7476e-ab22-4c1f-bedb-2c61303b6a63	POST	undefined	/user/login
-20230525	16:16:10	bbca56d4-d0be-4132-bd76-08de8421733f	POST	undefined	/user/login
-20230525	16:20:34	dcc66e17-39c6-4866-825d-adae3b6b8201	POST	undefined	/user/logout
-20230525	16:37:07	2ad627ef-d672-40af-a69f-5ccf202a3e96	POST	undefined	/user/logout
-20230525	16:37:49	cf0d08ed-6c0d-4e4f-bfe0-16cdf90082b7	GET	undefined	/user/logout
+20230605	17:00:12	b0a50a77-ffc6-414e-8572-a880f81e7d76	POST	http://localhost:3000	/user/login

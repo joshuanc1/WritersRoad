@@ -11,11 +11,13 @@ const errorEvent = require('./middleware/eventHandler');
 
 const app = express();
 
+
 app.use(express.json());
 app.use(cors());
-app.use(urlencoded({extended: false}));
+app.use(urlencoded({extended: false}));   //extended is usually false
 app.use(logger);
 app.use(errorEvent);
+app.use(express.static(path.resolve(__dirname, '..', '/public')));
 
 if(process.env.NODE_ENV != 'production'){
     require('dotenv').config({path: './config/.env'});
@@ -26,7 +28,8 @@ if(process.env.NODE_ENV != 'production'){
 const userRouter = require('./routes/userRoute');
 
 app.use('/user', userRouter);
-app.use(express.static(path.resolve(__dirname, '..', 'files')));
+
+
 
 
 

@@ -1,0 +1,37 @@
+.user_auth_form {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user_auth_form-login{
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+.user_auth_form-login input {
+    background: none;
+    border: none;
+    border-bottom: gray solid 1px;
+    line-height: 25px;
+}
+
+.user_auth_form-login input:focus {
+    border-color: black ;
+    outline: none;
+}
+
+.user_auth_form-login button {
+    padding: 15px;
+}
+.user_auth-title{
+    text-align: center;
+}
+.user_auth-title img{
+    width: 100px;
+}

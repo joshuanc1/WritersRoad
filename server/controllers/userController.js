@@ -1,14 +1,21 @@
-const User = require('../model/userModel');
+const User  = require('../model/userModel');
 const bcrypt = require('bcrypt');
 const sendCookie = require('../utils/cookie');
 
-const register = async(req, res, next) => {
-    const { name, username, password} = req.body;
+exports.register = async(req, res, next) => {
+
+    const { name, username, password } = req.body;
+    
+    
     const user = await User.findOne({username});
-    if(user?.username === username){
-        return next(res.status(400).json({message: "Username is already taken"}));
+    if(user){
+        if(user.username === username){
+            return next(res.status(400).json({message: "Username is already taken"}));
+        }
     }
+   
     const hashedPassword = await bcrypt.hash(password, 10);
+  
     const newUser = await User.create({
         name,
         username,
@@ -20,7 +27,7 @@ const register = async(req, res, next) => {
 }
 
 
-const login = async(req, res, next) => {
+exports.login = async(req, res, next) => {
     const {username, password} = req.body;
     const user = await User.findOne({username});
     console.log(user);
@@ -40,13 +47,13 @@ const login = async(req, res, next) => {
 
 }
 
-const logout = async(req, res, next) => {
+exports.logout = async(req, res, next) => {
     res.cookie('token', null, {
         expires: new Date(Date.now()),
         httpOnly: true
     })
+    console.log(res);
     res.status(200).json({success: true, message: "Logged out"})
 
 }
 
-module.exports = {login, register, logout};

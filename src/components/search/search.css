@@ -1,0 +1,48 @@
+.search_header-background{
+    background-image: url('../../assets/lib2.jpg');
+    height: 150px;
+    background-size: cover;
+}
+
+.search_container-outer {
+    font-size: 1.5rem;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+}
+
+.search_container-inner {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem;
+    justify-content:space-evenly;
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+.search-input {
+    padding: 15px 20px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    width: 100%;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.search-input-container{
+    display: flex;
+}
+
+.search-input:hover, :focus {
+    outline: none;
+}
+
+.search-input-button{
+    background-color: white;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border: none;
+    padding: 15px;
+}

@@ -1,0 +1,47 @@
+.navbar-container{
+    display: flex;
+    align-items: center;
+    height: 150px;
+    padding: 0 2rem;
+    color: whitesmoke;
+    font-size: 1.15rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+}
+
+.navbar-container img{
+    width: 100px;
+}
+
+.navbar-links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+
+}
+
+.navbar-user-button{
+    display: flex;
+    gap: 1.5rem;
+    margin-right: 2rem;
+    align-items: center;
+}
+
+
+
+.navbar-register{
+    background-color: whitesmoke;
+    color: black;
+    padding: 15px 30px;
+}
+
+.navbar-logout {
+    background-color: whitesmoke;
+    color: black;
+    padding: 15px 30px;
+    font-size: 1.15rem;
+    border: none;
+}
