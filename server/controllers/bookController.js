@@ -8,8 +8,9 @@ exports.findBooks = async(req, res, next) => {
     const title = req.query.title;
 
     const { data } = await axios.get(`http://openlibrary.org/search.json?title=${title}`);
-
+    
     const {docs} = data;
+
     let matchedBooks;
     if(docs){
             matchedBooks = docs.map(book => {

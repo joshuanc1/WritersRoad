@@ -9,15 +9,15 @@ import Book from '../Book/Book';
 const Search = () => {
     const dispatch = useDispatch();
     const [searchWord, setSearchWord] = useState("");
-    const {books, loading} = useSelector(state => state.books);
-
-   
-  
-
+    const {books} = useSelector(state => state.books);
+ 
     const handleSearch = (e) => {
         e.preventDefault();
         dispatch(getSearchedBooks(searchWord));
     }
+
+
+
   return (
     <>
         <div className='search_header-background'></div>
@@ -35,12 +35,12 @@ const Search = () => {
         </div>
         <div className='search_container-books'>
                                                         
-            {books ?
+            {books.length > 0 ?
                 books.map((book)=> {
-                    <Book key={book.id} book={book}/>
+                    return <Book key={book._id} book={book}/>
                 })
             :
-                <p>POOP</p>
+                <p>WHY DOESNT THIS WORK</p>
             }
 
         </div>

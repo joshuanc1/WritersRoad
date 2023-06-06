@@ -48,7 +48,10 @@
 }
 
 .search_container-books{
-    height: 100vh;
+    height: 400vh;
     display: grid;
     grid-template-columns: 1fr;
+    overflow: hidden;
+    width: 75%;
+    margin-left: 10%;
 }

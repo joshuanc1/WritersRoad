@@ -1,6 +1,6 @@
 import { SEARCH_BOOKS_REQUEST, SEARCH_BOOKS_SUCCESS, SEARCH_BOOKS_FAILED } from "../variables/searchVariables";
 
-export const searchReducer = (state = {}, {type, payload}) => {
+export const searchReducer = (state = {books:[]}, {type, payload}) => {
     switch(type) {
         case SEARCH_BOOKS_REQUEST:
             return {
@@ -9,6 +9,7 @@ export const searchReducer = (state = {}, {type, payload}) => {
             };
         case SEARCH_BOOKS_SUCCESS:
             return {
+                ...state,
                 loading: false,
                 books: payload
             };
