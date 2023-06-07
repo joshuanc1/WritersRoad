@@ -2,6 +2,7 @@
     background-image: url('../../assets/lib2.jpg');
     height: 150px;
     background-size: cover;
+
 }
 
 .search_container-outer {
@@ -48,10 +49,15 @@
 }
 
 .search_container-books{
-    height: 400vh;
+    height: fit-content;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
     overflow: hidden;
     width: 75%;
     margin-left: 10%;
+}
+
+.star{
+    width: 25px;
 }

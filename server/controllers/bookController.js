@@ -1,15 +1,16 @@
 const { default: axios } = require('axios');
 const Book = require('../model/bookModel');
-const sendCookie = require('../utils/cookie');
+
 
 
 
 exports.findBooks = async(req, res, next) => {
     const title = req.query.title;
 
-    const { data } = await axios.get(`http://openlibrary.org/search.json?title=${title}`);
+    const { data } = await axios.get(`http://openlibrary.org/search.json?title=${title}&jscmd=details`);
     
     const {docs} = data;
+    
 
     let matchedBooks;
     if(docs){
@@ -25,6 +26,9 @@ exports.findBooks = async(req, res, next) => {
                 })
             }
         )}
+
+    //pagination
+   
     
 
 
