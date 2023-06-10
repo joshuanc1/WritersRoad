@@ -1,11 +1,12 @@
-import React, {useRef} from 'react'
+import React, {useState} from 'react'
 import './book.css';
-import star from '../../assets/star.png';
 import bookCoverNa from '../../assets/bookCoverNA.png';
+import Rating from '../Rating/Rating';
+
 
 const Book = ({ book }) => {
-
-  const starRef = useRef(star);
+  
+const [rating, setRating] = useState(0);
   
   return (
     <div className='book-container-outer'>
@@ -22,10 +23,10 @@ const Book = ({ book }) => {
           <button>Add to Your Library</button>
           <div>Rate & Review this book</div>
           <div className='star-container'>
-
-              {[1,2,3,4,5].map((number)=>{ return <a href="#" key={number} ref={starRef}><img className='star' src={star} alt="star" /></a>})}
+            <Rating rating={rating} onRating={(rate) => setRating(rate)}></Rating>
         
           </div>
+          
 
 
         </div>

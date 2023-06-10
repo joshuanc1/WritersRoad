@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSearchedBooks } from '../../actions/searchActions';
 import Book from '../Book/Book';
 import { useEffect } from 'react';
-import Pagination from './Pagination';
+import Pagination from '../Pagination/Pagination';
+import Loading from '../Loading/Loading';
 
 
 const Search = () => {
@@ -13,24 +14,30 @@ const Search = () => {
     const [searchWord, setSearchWord] = useState("");
     const {books, loading} = useSelector(state => state.books);
     const [currentPage, setCurrentPage] = useState(1);
-    const [booksPerPage, setBooksPerPage] = useState(10);
+    const [booksPerPage] = useState(10);
     const [currentBooks, setCurrentBooks] = useState([]);
+   
  
     const handleSearch = (e) => {
         e.preventDefault();
         dispatch(getSearchedBooks(searchWord));
+        setCurrentPage(1);
     }
     useEffect(()=>{
         const indexOfLastBook = currentPage * booksPerPage;
         const indexOfFirstBook = indexOfLastBook - booksPerPage;
         setCurrentBooks(books.slice(indexOfFirstBook, indexOfLastBook));
-    },[books])
+    },[books, currentPage, booksPerPage])
 
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
+  
 
 
   return (
     <>
-        <div className='search_header-background'></div>
+        <div className='search_header-background'>
         <div className='search_container-outer'>
             <div className='search_container-inner'>
                 <h1>Search For Various Books</h1>
@@ -43,18 +50,24 @@ const Search = () => {
                 </form>
             </div>
         </div>
+        </div>
+        {loading ? <Loading/> :
         <div className='search_container-books'>
-                                                    
+                                             
             {books.length > 0 ?
-                books.map((book)=> {
+                currentBooks.map((book)=> {
                     return <Book key={book._id} book={book}/>
                 })
             :
-                <p>No Books Found</p>
+                <p className='no-books'>No Books Found</p>
             }
             
+            <Pagination booksPerPage={booksPerPage} totalBooks={books.length} paginate={paginate} currentPage={currentPage}/>
+            
         </div>
-        <Pagination booksPerPage={booksPerPage} totalBooks={books.length}></Pagination>
+        }
+        
+      
     </>
   )
 }

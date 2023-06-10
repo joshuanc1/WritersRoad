@@ -1,22 +1,33 @@
 import React from 'react'
 import './navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import icon from '../../assets/writerRoadIcon.png';
 import {useSelector, useDispatch} from 'react-redux';
 import {logout} from '../../actions/userActions';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.user);
+  const [location, setLocation] = useState("");
 
   const handleLogout = async(e) => {
       e.preventDefault();
       dispatch(logout());
   }
 
+    const path = useLocation().pathname;
+    
+    useEffect(()=>{
+      setLocation(path.split("/")[2]);
+    },[location,path])
+
+  
+
 
   return (
-    <div className='navbar-container'>
+    <div className={`navbar-container  ${location === "login" || location === "register" ? "black" : ""} `}>
         <img src={icon} alt="web icon" />
         <h2>Writer's Road</h2>
         <ul className='navbar-links'>

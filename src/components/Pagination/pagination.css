@@ -1,0 +1,16 @@
+.pagination{
+    display: flex;
+    font-size: 1.25rem;
+  
+    justify-content: center;
+}
+
+.page_number {
+    border: solid black 1px;
+    padding: 10px 15px;
+}
+
+.selected{
+    border: solid green 2px;
+    color: green;
+}

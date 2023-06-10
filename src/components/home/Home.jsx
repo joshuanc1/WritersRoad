@@ -19,6 +19,7 @@ const Home = () => {
             </div>
             <div className='home_header-inner-image-scroll-container'>
               <div className='scroll-container'>
+              
                 
               </div>
             </div>

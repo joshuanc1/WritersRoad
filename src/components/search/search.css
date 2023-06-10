@@ -1,19 +1,25 @@
 .search_header-background{
-    background-image: url('../../assets/lib2.jpg');
-    height: 150px;
+    background-image: url('../../assets/lib3.jpg');
+    height: 75vh;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 15px;
 
 }
 
 .search_container-outer {
+
     font-size: 1.5rem;
-    height: 75vh;
+    height: 50vh;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .search_container-inner {
-    width: 50%;
+    width: 60%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -21,6 +27,7 @@
     justify-content:space-evenly;
     text-align: center;
     background-color: whitesmoke;
+    border-radius: 15px;
 }
 
 .search-input {
@@ -53,11 +60,16 @@
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
-    overflow: hidden;
     width: 75%;
     margin-left: 10%;
 }
 
 .star{
     width: 25px;
+}
+
+.no-books{
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 50px;
 }
