@@ -27,14 +27,45 @@ exports.findBooks = async(req, res, next) => {
             }
         )}
 
-    //pagination
-   
-    
-
-
     return res.status(200).json({
         success: true,
         books: matchedBooks,
     })
 }
 
+exports.getBookDetail = async(req, res, next) => {
+    const isbn = req.params.isbn;
+    
+   
+    const {data} = await axios.get(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=data&format=json`);
+
+   
+    const info = data[`ISBN:${isbn}`];
+    console.log(info);
+
+    let bookDetail;
+    if(data){
+        bookDetail = (info) => {
+            const {title, authors, number_of_pages, publish_date, cover, excerpts=[{text: "No Available Text", comment: "No Available Comments"}] } = info;
+            
+            return new Book({
+                title,
+                authors: authors[0].name,
+                isbn,
+                pages: number_of_pages,
+                published_date: publish_date,
+                cover: cover.large,
+                text: excerpts[0].text,
+                comment: excerpts[0].comment
+            })
+        }
+    }
+   let book = bookDetail(info);
+   console.log(book);
+
+    return res.status(200).json({
+        success: true,
+        book: book,
+    })
+
+}

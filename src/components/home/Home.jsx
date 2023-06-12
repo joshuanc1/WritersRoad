@@ -13,7 +13,7 @@ const Home = () => {
                 <div className='about-container'>
                   <p>COME JOIN US</p>
                   <h1>Critique and grow with other Writers!</h1>
-                  <p>Browse books and create your own library. Talk with others about your favorite books and authors.</p>
+                  <p>Browse books and create your own library. Write reviews and share your thoughts with others.</p>
                   <div className='about-container-register'><Link to='/user/register'>SIGN UP</Link></div>
                 </div>
             </div>

@@ -4,9 +4,8 @@ import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import iconBlack from '../../assets/writerRoadIconBlack.png';
 import './login.css';
-import React from 'react'
-import axios from 'axios';
-import { LOGIN_USER_REQUEST } from '../../variables/userVariables';
+import React from 'react';
+
 
 
 

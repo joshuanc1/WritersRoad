@@ -1,7 +1,7 @@
 import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILED, REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS, REGISTER_USER_FAILED, LOGOUT_USER_SUCCESS, LOGOUT_USER_FAILED } from "../variables/userVariables";
 
 
-export const userReducer = (state = {}, {type, payload}) => {
+export const userReducer = (state = {loading: false, isAuthenticated: false, user: {}}, {type, payload}) => {
     switch(type){
         case LOGIN_USER_REQUEST:
         case REGISTER_USER_REQUEST:

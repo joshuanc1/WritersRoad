@@ -29,7 +29,8 @@ const userRouter = require('./routes/userRoute');
 const searchRouter = require('./routes/booksRoute');
 
 app.use('/user', userRouter);
-app.use('/search', searchRouter);
+app.use('/api', searchRouter);
+
 
 
 

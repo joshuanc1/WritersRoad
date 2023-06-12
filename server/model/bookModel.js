@@ -8,9 +8,15 @@ const bookSchema = new mongoose.Schema({
     author: {
         type: [String],
     },
+    authors:[{
+        
+            type: String,
+        
+    }],
     isbn: {
         type: [String],
     },
+   
     pages: {
         type: Number,
     },
@@ -18,6 +24,17 @@ const bookSchema = new mongoose.Schema({
         type: String,
     },
     cover:{
+        type: String,
+    },
+    covers:{
+        large:{
+            type: String,
+        }
+    },
+    text: {
+        type: String,
+    },
+    comment: {
         type: String,
     }
 })

@@ -1,0 +1,32 @@
+.book_detail-outer-container{
+    height: 750px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.book_detail-inner-container{
+    width: 90%;
+    height: 50%;
+    background-color: green;
+    display: flex;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+.book_detail-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.book_detail-rating{
+    font-size: 2rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.book_detail-reviews{
+    min-height: fit-content;
+}

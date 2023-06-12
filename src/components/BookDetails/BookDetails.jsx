@@ -1,0 +1,46 @@
+import React, {useState} from 'react'
+import { useSelector } from 'react-redux'
+import './bookDetails.css';
+import bookCoverNa from '../../assets/bookCoverNA.png';
+import Rating from '../Rating/Rating';
+import Loading from '../Loading/Loading';
+
+const BookDetails = () => {
+
+    const {book, loading} = useSelector(state => state.book);
+    const [rating, setRating] = useState(0);
+
+  return (
+
+    <>
+    {loading? <Loading/> :
+    <div className='book_detail-outer-container'>
+       
+            <div className='book_detail-inner-container'>
+                
+                <img src={book.cover ? book.cover : bookCoverNa} alt="book-cover" />
+                <div className='book_detail-info'>
+                    <h1>{book.title}</h1>
+                    <div className='book_detail-rating'>
+                        <Rating rating={rating} onRating={(rate) => setRating(rate)}></Rating>
+                        <div>Rating: {rating}</div>
+                    </div>
+                    <div>{book.authors}</div>
+                    <div>{book.comment} of {book.title}</div>
+                    <div>"{book.text}"</div>
+                    <div>pages: {book.pages}</div>
+                </div>
+            </div>
+            <div className='book_detail-reviews'>
+                
+
+            </div>
+        
+        
+    </div>
+    }
+    </>
+  )
+}
+
+export default BookDetails

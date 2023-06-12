@@ -8,9 +8,12 @@
 
 
 
-.book-container img{
-    width: 150px;
-    height: auto;
+.book-container-outer img{
+    transition: transform .5s;
+}
+
+.book-container-outer img:hover {
+    transform: scale(1.5);
 }
 
 .book-information {
@@ -37,7 +40,20 @@
     outline: none;
 }
 
+.book-actions button:hover{
+    background-color: rgb(1, 149, 1);
+}
+
 .star-container{
     display: flex;
 }
 
+
+.book-review_link{
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.book-review_link:hover{
+    color: rgb(1, 149, 1);
+}
