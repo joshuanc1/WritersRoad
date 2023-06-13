@@ -12,7 +12,8 @@ import Loading from '../Loading/Loading';
 const Search = () => {
     const dispatch = useDispatch();
     const [searchWord, setSearchWord] = useState("");
-    const {books, loading} = useSelector(state => state.books);
+    const { books, loading } = useSelector(state => state.books);
+    const { isAuthenticated } = useSelector(state => state.user);
     const [currentPage, setCurrentPage] = useState(1);
     const [booksPerPage] = useState(10);
     const [currentBooks, setCurrentBooks] = useState([]);
@@ -56,7 +57,7 @@ const Search = () => {
                                              
             {books.length > 0 ?
                 currentBooks.map((book)=> {
-                    return <Book key={book._id} book={book}/>
+                    return <Book key={book._id} book={book} isAuthenticated={isAuthenticated} />
                 })
             :
                 <p className='no-books'>No Books Found</p>

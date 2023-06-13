@@ -1,5 +1,6 @@
 const { default: axios } = require('axios');
 const Book = require('../model/bookModel');
+const User = require('../model/userModel');
 
 
 
@@ -41,12 +42,11 @@ exports.getBookDetail = async(req, res, next) => {
 
    
     const info = data[`ISBN:${isbn}`];
-    console.log(info);
 
     let bookDetail;
     if(data){
         bookDetail = (info) => {
-            const {title, authors, number_of_pages, publish_date, cover, excerpts=[{text: "No Available Text", comment: "No Available Comments"}] } = info;
+            const {title, authors, number_of_pages, publish_date, cover="", excerpts=[{text: "No Available Text", comment: "No Available Comments"}] } = info;
             
             return new Book({
                 title,
@@ -67,5 +67,29 @@ exports.getBookDetail = async(req, res, next) => {
         success: true,
         book: book,
     })
+
+}
+
+exports.addBookToLibrary = async(req, res, next) => {
+    let book = req.body;
+    
+    const user = await User.findById(req.user._id);
+    
+
+    if(user.userLibrary.includes(book)){
+        return res.status(200).json({
+            success: true,
+            message: "Book Already in Library!"
+        })
+    } else{
+        user.userLibrary.push(book);
+
+        await user.save();
+
+        return res.status(200).json({
+            success: true,
+            message: "Book added to library!"
+        })
+    }
 
 }

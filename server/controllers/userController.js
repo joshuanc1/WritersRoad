@@ -52,8 +52,22 @@ exports.logout = async(req, res, next) => {
         expires: new Date(Date.now()),
         httpOnly: true
     })
-    console.log(res);
+
     res.status(200).json({success: true, message: "Logged out"})
 
+}
+
+
+exports.loadUser = async(req, res, next) => {
+    const user = await User.findOne(req.user._id).populate({
+        path: 'userLibrary',
+    })
+
+    console.log(user);
+
+    res.status(200).json({
+        success: true,
+        user,
+    })
 }
 

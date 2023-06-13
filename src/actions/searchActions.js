@@ -1,5 +1,8 @@
-import { SEARCH_BOOKS_FAILED, SEARCH_BOOKS_SUCCESS, SEARCH_BOOKS_REQUEST, SINGLE_BOOK_REQUEST, SINGLE_BOOK_SUCCESS, SINGLE_BOOK_FAILED } from "../variables/searchVariables";
+import { SEARCH_BOOKS_FAILED, SEARCH_BOOKS_SUCCESS, SEARCH_BOOKS_REQUEST, SINGLE_BOOK_REQUEST, SINGLE_BOOK_SUCCESS, SINGLE_BOOK_FAILED, ADD_BOOK_LIBRARY_REQUEST, ADD_BOOK_LIBRARY_SUCCESS, ADD_BOOK_LIBRARY_FAILED } from "../variables/searchVariables";
 import axios from "axios";
+
+axios.defaults.withCredentials = true;
+
 
 export const getSearchedBooks = (title) => async(dispatch) => {
     try{
@@ -57,5 +60,29 @@ export const getSingleBook = (isbn) => async(dispatch) => {
             type: SINGLE_BOOK_FAILED, 
             payload: error.response.data.message
         });
+    }
+}
+
+export const addBookToLibrary = (book) => async(dispatch) => {
+    try{
+        dispatch({type: ADD_BOOK_LIBRARY_REQUEST});
+
+    
+        const {data} = await axios.post(
+            'http://localhost:3001/api/library',
+            book,
+
+
+        );
+        dispatch({
+            type: ADD_BOOK_LIBRARY_SUCCESS,
+            payload: data.user
+        })
+
+    } catch (error) {
+        dispatch({
+            type: ADD_BOOK_LIBRARY_FAILED,
+            error: error.response.data.message
+        })
     }
 }

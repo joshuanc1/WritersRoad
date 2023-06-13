@@ -3,15 +3,16 @@ import './book.css';
 import bookCoverNa from '../../assets/bookCoverNA.png';
 import Rating from '../Rating/Rating';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { getSingleBook } from '../../actions/searchActions';
+import { useDispatch} from 'react-redux';
+import { getSingleBook, addBookToLibrary } from '../../actions/searchActions';
 
 
-const Book = ({ book }) => {
+const Book = ({ book, isAuthenticated }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [rating, setRating] = useState(0);
+  
 
 
   const handleReview = (isbn) => {
@@ -20,8 +21,8 @@ const Book = ({ book }) => {
   }
 
   const handleAdd = (book) => {
-    //Continue from here.
 
+    dispatch(addBookToLibrary(book));
   }
   
   return (
@@ -36,7 +37,7 @@ const Book = ({ book }) => {
         </div>
 
         <div className="book-actions">
-          <button onClick={() => handleAdd(book)}>Add to Your Library</button>
+          <button onClick={isAuthenticated ? (() => handleAdd(book)): (()=> alert("You have to sign in first!"))}>Add to Your Library</button>
           <div className='book-review_link' onClick={() => handleReview(book.isbn[0])} >Rate & Review this book</div>
           <div className='star-container'>
             <Rating rating={rating} onRating={(rate) => setRating(rate)}></Rating>

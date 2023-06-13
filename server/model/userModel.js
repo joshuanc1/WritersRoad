@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
         minlength: [10, "Password must be a minimum 10 characters"],
         
     },
-    favoritedBooks: [
+    userLibrary: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Book",
@@ -31,18 +31,6 @@ const userSchema = new mongoose.Schema({
             ref: "Review"
         }
     ],
-    followers: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-        }
-    ],
-    following: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-        }
-    ]
 
 })
 
