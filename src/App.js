@@ -9,7 +9,7 @@ import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import AuthRoute from './AuthRoute/AuthRoute';
 import BookDetails from './components/BookDetails/BookDetails';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { useEffect } from 'react';
 import {loadUser} from './actions/userActions';
 
@@ -21,9 +21,10 @@ import {loadUser} from './actions/userActions';
 function App() {
 
   const dispatch = useDispatch();
+ 
 
   useEffect(()=> {
-    dispatch(loadUser)
+    dispatch(loadUser())
   },[dispatch]);
 
 

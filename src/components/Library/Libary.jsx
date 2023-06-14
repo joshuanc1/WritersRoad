@@ -1,22 +1,58 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import './library.css'
+import {useNavigate} from 'react-router-dom'
+import {getSingleBook, removeBookFromLibrary} from '../../actions/searchActions';
 
 const Libary = () => {
-  const { library } = useSelector(state => state.library);
+  const { user }  = useSelector(state => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleReview = (isbn) => {
+    dispatch(getSingleBook(isbn));
+    navigate(`/book/${isbn}`);
+  }
+
+  const handleRemove = (id) => {
+    dispatch(removeBookFromLibrary(id));
+  }
+
+
   return (
     <div className='library_header-background'>
-      {library ? library.map(book => {
-        <div key={book._id}>
-            <img src={book.cover} alt="book-cover" />
-            <h1>{book.title}</h1>
-        </div>
-        
-      })
-      :
-      "no available"
+      <h1 className='library_title'>My Library</h1>
+      <p>Update your library and add Reviews!</p>
+
+      <div className='diagonal'>
+      <div className='library_outer-container'>
+
+      <div className='profile-container'>
+        <h2>{user.name}</h2>
+        <div>{user.username}</div>
+      </div>
+
+      <div className='book-library-container'>
+    
+        {user.userLibrary.length > 0 ? user.userLibrary.map(book => (
+          
+          <div className='book_box' key={book.isbn[0]}>
+              <div>{book.title}</div>
+              <img onClick={() =>handleReview(book.isbn[0])} style={{width: 200, height: 300}} src={`https://covers.openlibrary.org/b/id/${book.cover}-L.jpg`} alt="book-cover" />
+
+              <div className='remove' onClick={()=> handleRemove(book._id)}>remove from library</div>
+          </div>
+
+      
+        ))
+        :
+        "No books in your Library!"
+      
       }
-        
+
+      </div>
+      </div>
+      </div>
     </div>
   )
 }

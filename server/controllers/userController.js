@@ -29,7 +29,7 @@ exports.register = async(req, res, next) => {
 
 exports.login = async(req, res, next) => {
     const {username, password} = req.body;
-    const user = await User.findOne({username});
+    const user = await User.findOne({username}).populate("userLibrary");
     console.log(user);
 
     if(user?.username != username){
@@ -59,9 +59,7 @@ exports.logout = async(req, res, next) => {
 
 
 exports.loadUser = async(req, res, next) => {
-    const user = await User.findOne(req.user._id).populate({
-        path: 'userLibrary',
-    })
+    const user = await User.findOne(req.user._id).populate("userLibrary");
 
     console.log(user);
 

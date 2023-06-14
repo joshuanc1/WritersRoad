@@ -1,4 +1,64 @@
 .library_header-background{
     background-image: url('../../assets/lib1.jpg');
     height: 100vh;
+    padding-top: 10rem;
+  
+}
+
+.library_title{
+    font-size: 3rem;
+    text-align: center;
+    color: whitesmoke;
+}
+p {
+    font-size: 2rem;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.library_outer-container{
+    margin-top: 10%;
+    display: flex;
+    padding: 2%;
+    gap: 1rem;
+   
+}
+.diagonal{
+    
+    position: relative;
+}
+.diagonal::after{
+    content: '';
+    background-color: black;
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+}
+.profile-container{
+    padding: 0.5rem;
+    background-color: antiquewhite;
+    height: 500px;
+}
+
+.book-library-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    max-width: 100vw;
+}
+
+.book_box {
+    background-color: antiquewhite;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.book_box div {
+    font-weight: 600;
+}
+
+.remove:hover{
+    cursor: pointer;
+    color: red;
 }

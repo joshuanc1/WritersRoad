@@ -1,6 +1,7 @@
 const { default: axios } = require('axios');
 const Book = require('../model/bookModel');
 const User = require('../model/userModel');
+const mongoose = require('mongoose');
 
 
 
@@ -72,16 +73,20 @@ exports.getBookDetail = async(req, res, next) => {
 
 exports.addBookToLibrary = async(req, res, next) => {
     let book = req.body;
-    
-    const user = await User.findById(req.user._id);
+
+    const newBook = await Book.create(book);
+
+    const user = await User.findById(req.user._id).populate("userLibrary");
     
 
-    if(user.userLibrary.includes(book)){
+    if(user.userLibrary.includes(book._id)){
         return res.status(200).json({
             success: true,
             message: "Book Already in Library!"
         })
     } else{
+        
+    
         user.userLibrary.push(book);
 
         await user.save();
@@ -92,4 +97,14 @@ exports.addBookToLibrary = async(req, res, next) => {
         })
     }
 
+}
+
+exports.deleteBookFromLibrary = async(req, res, next) => {
+    const id = req.body;
+
+
+
+
+
+    
 }
