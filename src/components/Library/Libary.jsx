@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import './library.css'
 import {useNavigate} from 'react-router-dom'
 import {getSingleBook, removeBookFromLibrary} from '../../actions/searchActions';
+import { loadUser } from '../../actions/userActions';
 
 const Libary = () => {
   const { user }  = useSelector(state => state.user);
@@ -14,8 +15,9 @@ const Libary = () => {
     navigate(`/book/${isbn}`);
   }
 
-  const handleRemove = (id) => {
-    dispatch(removeBookFromLibrary(id));
+  const handleRemove = async(id) => {
+    await dispatch(removeBookFromLibrary(id));
+    await dispatch(loadUser())
   }
 
 
@@ -28,8 +30,10 @@ const Libary = () => {
       <div className='library_outer-container'>
 
       <div className='profile-container'>
+        <div className='profile-inner'>
         <h2>{user.name}</h2>
         <div>{user.username}</div>
+        </div>
       </div>
 
       <div className='book-library-container'>

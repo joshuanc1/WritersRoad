@@ -20,12 +20,12 @@ import {loadUser} from './actions/userActions';
 
 function App() {
 
-  const dispatch = useDispatch();
+  /*const dispatch = useDispatch();
  
 
   useEffect(()=> {
     dispatch(loadUser())
-  },[dispatch]);
+  },[dispatch]);*/
 
 
   return (

@@ -5,6 +5,7 @@ import Rating from '../Rating/Rating';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch} from 'react-redux';
 import { getSingleBook, addBookToLibrary } from '../../actions/searchActions';
+import {loadUser} from '../../actions/userActions';
 
 
 const Book = ({ book, isAuthenticated }) => {
@@ -20,9 +21,10 @@ const Book = ({ book, isAuthenticated }) => {
     navigate(`/book/${isbn}`);
   }
 
-  const handleAdd = (book) => {
+  const handleAdd = async(book) => {
 
-    dispatch(addBookToLibrary(book));
+    await dispatch(addBookToLibrary(book));
+    await dispatch(loadUser())
   }
   
   return (

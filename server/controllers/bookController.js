@@ -41,13 +41,14 @@ exports.getBookDetail = async(req, res, next) => {
    
     const {data} = await axios.get(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=data&format=json`);
 
-   
+  
     const info = data[`ISBN:${isbn}`];
+    
 
     let bookDetail;
     if(data){
         bookDetail = (info) => {
-            const {title, authors, number_of_pages, publish_date, cover="", excerpts=[{text: "No Available Text", comment: "No Available Comments"}] } = info;
+            const {title, authors, number_of_pages, publish_date, cover={large: ""}, excerpts=[{text: "No Available Text", comment: "No Available Comments"}] } = info;
             
             return new Book({
                 title,
@@ -62,7 +63,7 @@ exports.getBookDetail = async(req, res, next) => {
         }
     }
    let book = bookDetail(info);
-   console.log(book);
+   
 
     return res.status(200).json({
         success: true,
@@ -74,12 +75,12 @@ exports.getBookDetail = async(req, res, next) => {
 exports.addBookToLibrary = async(req, res, next) => {
     let book = req.body;
 
-    const newBook = await Book.create(book);
-
-    const user = await User.findById(req.user._id).populate("userLibrary");
+    const bookID = new mongoose.Types.ObjectId(book._id);
+ 
+    const user = await User.findById(req.user._id);
     
 
-    if(user.userLibrary.includes(book._id)){
+    if(user.userLibrary.includes(bookID)){
         return res.status(200).json({
             success: true,
             message: "Book Already in Library!"
@@ -101,10 +102,23 @@ exports.addBookToLibrary = async(req, res, next) => {
 
 exports.deleteBookFromLibrary = async(req, res, next) => {
     const id = req.body;
-
-
-
-
-
+    const userId = new mongoose.Types.ObjectId(id.book);
     
+    const user = await User.findById(req.user._id);
+
+    if(user.userLibrary.includes(userId)){
+        user.userLibrary = user.userLibrary.filter(book => !book.equals(userId));
+        await user.save();
+
+        return res.status(200).json({
+            success: true,
+            message: "Book Deleted"
+        })
+    } else {
+        return res.status(401).json({
+            success: false,
+            message: "Book is not in Library"
+        })
+    }
+
 }
