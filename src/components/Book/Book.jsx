@@ -24,7 +24,7 @@ const Book = ({ book, isAuthenticated }) => {
   const handleAdd = async(book) => {
 
     await dispatch(addBookToLibrary(book));
-    await dispatch(loadUser())
+    await dispatch(loadUser());
   }
   
   return (

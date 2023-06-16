@@ -2,7 +2,7 @@ import { configureStore, combineReducers} from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import { userReducer } from './reducers/userReducer';
 import { searchReducer, bookDetailReducer, bookToLibrary } from './reducers/searchReducer';
-import { reviewReducer } from './reducers/reviewReducer';
+import { reviewReducer, reviewListReducer } from './reducers/reviewReducer';
 
 const reducer = combineReducers({
 
@@ -11,6 +11,7 @@ const reducer = combineReducers({
     book: bookDetailReducer,
     library: bookToLibrary,
     review: reviewReducer,
+    reviewList: reviewListReducer,
    
 
 });

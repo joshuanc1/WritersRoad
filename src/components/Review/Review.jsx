@@ -2,15 +2,14 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import './review.css';
 import Rating from '../Rating/Rating';
-import { addReview } from '../../actions/reviewAction';
+import { addReview, getListOfReviews } from '../../actions/reviewAction';
 import { useEffect } from 'react';
 
 
 
-const Review = ({book}) => {
+const Review = ({book, visible}) => {
   const user = useSelector(state => state.user);
-  const reviews = useSelector(state => state.review);
-
+  const {reviewList} = useSelector(state => state.reviewList);
   const dispatch = useDispatch();
   const [starRating, setStarRating] = useState(0);
   const [reviewForm, setReviewForm] = useState({
@@ -23,6 +22,8 @@ const Review = ({book}) => {
     message: ""
   })
 
+  const {title, message} = reviewForm;
+
   useEffect(()=>{
     setReviewForm({...reviewForm, userId: user.id, username: user.username})
   },[user._id, user.username]);
@@ -32,31 +33,25 @@ const Review = ({book}) => {
   },[starRating]);
 
 
-
   const handleFormChange = (e) => {
    setReviewForm({...reviewForm, [e.target.name] : e.target.value})
   }
 
-  const {userId, bookId, bookISBN, username, rating, title, message} = reviewForm;
 
   const handleAddReview = (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('userId', userId);
-    formData.append('bookId', bookId);
-    formData.append('bookISBN',bookISBN);
-    formData.append('username', username);
-    formData.append('rating', rating);
-    formData.append('title', title);
-    formData.append('message', message);
-
-   dispatch(addReview(formData));
+   dispatch(addReview(reviewForm));
    
   };
 
+  useEffect(() => {
+    dispatch(getListOfReviews(book.isbn));
+  },[]);
+
   return (
     <div className='review_outer-container'>
+      {visible &&
       <div className='review_form-container'>
           <form onSubmit={handleAddReview}>
             <Rating rating={starRating} onRating={(rate) => setStarRating(rate)} value={starRating}/>
@@ -67,8 +62,20 @@ const Review = ({book}) => {
             <button type='submit'>Submit Review</button>
           </form>
       </div>
+      }
       <div className='review_list_users'>
-
+          {reviewList.length > 0 ? 
+            reviewList.map(review => (
+              <div className="reviews" key={review._id}>
+                <Rating rating={review.rating}></Rating>
+                <div>{review.title}</div>
+                <div>{review.message}</div>
+                <div>{review.username}</div>
+              </div>
+            ))
+          :
+            <div>No reviews for this book yet!</div>
+          }
 
       </div>
         

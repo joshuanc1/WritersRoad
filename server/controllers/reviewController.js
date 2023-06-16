@@ -4,22 +4,19 @@ const mongoose = require('mongoose');
 
 exports.addReview = async(req,res,next) => {
 
-        const form = req.body;
-        const userID = new mongoose.Types.ObjectId(form.userId);
-        const bookID = new mongoose.Types.ObjectId(form.bookId);
-    
+        const reviewData = req.body;
 
-        await Review.create(form);
+        const review= await Review.create(reviewData);
+        
+        const user = await User.findById(req.user._id);
 
-        const user = await User.findByIdAndUpdate({_id: userID});
-
-        if(user.userReviews.includes(bookID)){
+        if(user.userReviews.includes(review)){
             return res.status(200).json({
                 success: true,
                 message: "you already wrote a review"
             })
         } else {
-            user.userReviews.push(form);
+            user.userReviews.push(review);
 
             await user.save();
 
@@ -28,6 +25,17 @@ exports.addReview = async(req,res,next) => {
                 message: "Review made!"
             })
         }
+}
 
+exports.getBookReviewList = async(req, res, next) => {
+    const bookISBN= req.params.isbn;
+   
 
+    const reviewList = await Review.find({bookISBN: bookISBN});
+
+    res.status(200).json({
+        success: true,
+        reviewList: reviewList
+    })
+    
 }

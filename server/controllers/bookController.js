@@ -63,6 +63,12 @@ exports.getBookDetail = async(req, res, next) => {
         }
     }
    let book = bookDetail(info);
+
+   const bookExist = await Book.find({title: book.title});
+
+   if(!bookExist){
+    await Book.create(book);
+   }
    
 
     return res.status(200).json({
@@ -75,22 +81,28 @@ exports.getBookDetail = async(req, res, next) => {
 exports.addBookToLibrary = async(req, res, next) => {
     let book = req.body;
 
-    const bookID = new mongoose.Types.ObjectId(book._id);
+
+    //const bookID = new mongoose.Types.ObjectId(book._id);
+    const bookExist = await Book.findById(book._id);
+
+    if(!bookExist){
+        await Book.create(book);
+    }
  
     const user = await User.findById(req.user._id);
     
 
-    if(user.userLibrary.includes(bookID)){
+    if(user.userLibrary.includes(book._id)){
         return res.status(200).json({
             success: true,
             message: "Book Already in Library!"
         })
     } else{
-        
-    
         user.userLibrary.push(book);
 
         await user.save();
+
+        console.log(user);
 
         return res.status(200).json({
             success: true,

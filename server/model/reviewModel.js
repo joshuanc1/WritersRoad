@@ -1,18 +1,17 @@
 const mongoose = require('mongoose');
 
-const reviewModel = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema({
         bookId: {
             type: String,
-            required: true
+            
         },
         userId: {
             type: String,
-            required: true
+           
         },
-        bookISBN: {
+        bookISBN: [{
             type: String,
-            required: true
-        },
+        }],
         title: {
             type: String,
         },
@@ -29,4 +28,4 @@ const reviewModel = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model("Review", reviewModel);
+module.exports = mongoose.model('Review', reviewSchema);

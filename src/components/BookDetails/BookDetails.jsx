@@ -13,6 +13,14 @@ const BookDetails = () => {
     const [rating, setRating] = useState(0);
     const [visible, setVisible] = useState(false);
 
+    const handleVisible =() => {
+        if(visible) {
+            setVisible(false)
+        } else {
+            setVisible(true)
+        }
+    }
+
   return (
 
     <>
@@ -38,10 +46,10 @@ const BookDetails = () => {
                 {!isAuthenticated ? 
                 <div className='addReview-btn' >Write a Review</div>
                 :
-                <div className='addReview-btn' onClick={()=>setVisible(false ? true : false)} >Write a Review</div>
+                <div className='addReview-btn' onClick={handleVisible} >Write a Review</div>
                 }
                 
-                <Review book={book}/>
+                <Review visible={visible} book={book}/>
                 
             </div>
         

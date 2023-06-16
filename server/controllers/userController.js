@@ -60,9 +60,10 @@ exports.logout = async(req, res, next) => {
 exports.loadUser = async(req, res, next) => {
     const user = await User.findOne(req.user._id).populate("userLibrary");
 
+
     res.status(200).json({
         success: true,
-        user,
+        user: user,
     })
 }
 

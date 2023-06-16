@@ -17,7 +17,7 @@ const Libary = () => {
 
   const handleRemove = async(id) => {
     await dispatch(removeBookFromLibrary(id));
-    await dispatch(loadUser())
+    await dispatch(loadUser());
   }
 
 
