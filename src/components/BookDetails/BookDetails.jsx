@@ -4,11 +4,14 @@ import './bookDetails.css';
 import bookCoverNa from '../../assets/bookCoverNA.png';
 import Rating from '../Rating/Rating';
 import Loading from '../Loading/Loading';
+import Review from '../Review/Review';
 
 const BookDetails = () => {
 
     const {book, loading} = useSelector(state => state.book);
+    const {isAuthenticated} = useSelector(state => state.user);
     const [rating, setRating] = useState(0);
+    const [visible, setVisible] = useState(false);
 
   return (
 
@@ -32,8 +35,14 @@ const BookDetails = () => {
                 </div>
             </div>
             <div className='book_detail-reviews'>
+                {!isAuthenticated ? 
+                <div className='addReview-btn' >Write a Review</div>
+                :
+                <div className='addReview-btn' onClick={()=>setVisible(false ? true : false)} >Write a Review</div>
+                }
                 
-
+                <Review book={book}/>
+                
             </div>
         
         

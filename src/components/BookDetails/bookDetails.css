@@ -2,13 +2,12 @@
     height: 750px;
     background-color: red;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
 }
 
 .book_detail-inner-container{
-    width: 90%;
-    height: 50%;
+   
     background-color: green;
     display: flex;
     padding: 1rem;
@@ -29,4 +28,18 @@
 
 .book_detail-reviews{
     min-height: fit-content;
+    background-color: blue;
+}
+
+.addReview-btn{
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    border-radius: 25px;
+    width: 150px;
+    text-align: center;
+}
+
+.addReview-btn:hover{
+    cursor: pointer;
 }
