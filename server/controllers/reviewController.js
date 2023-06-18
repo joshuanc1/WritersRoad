@@ -39,3 +39,28 @@ exports.getBookReviewList = async(req, res, next) => {
     })
     
 }
+
+
+exports.deleteReview = async(req, res, next) => {
+    const reviewID = req.params.id;
+    const reviewObjectId = new mongoose.Types.ObjectId(reviewID);
+
+
+
+    const user = await User.findById(req.user._id);
+
+
+    if(user.userReviews.includes(reviewObjectId)){
+        user.userReviews = user.userReviews.filter(review => !review.equals(reviewObjectId));
+    
+        await user.save();
+
+        await Review.findOneAndDelete(reviewObjectId);
+
+        res.status(202).json({
+            success: true,
+        })
+    }
+
+    
+}

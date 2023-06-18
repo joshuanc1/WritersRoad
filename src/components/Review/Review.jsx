@@ -4,19 +4,26 @@ import './review.css';
 import Rating from '../Rating/Rating';
 import { addReview, getListOfReviews } from '../../actions/reviewAction';
 import { useEffect } from 'react';
+import {loadUser} from '../../actions/userActions';
 
 
 
-const Review = ({book, visible}) => {
-  const user = useSelector(state => state.user);
+const Review = ({book, visible, user, handleVisible, setAverageRating}) => {
+
   const {reviewList} = useSelector(state => state.reviewList);
   const dispatch = useDispatch();
   const [starRating, setStarRating] = useState(0);
+  
+
+
+
+
   const [reviewForm, setReviewForm] = useState({
-    userId: user.user._id,
+    userId: user?._id,
     bookId: book._id,
     bookISBN: book.isbn,
-    username: user.user.username,
+    bookCover: book.cover,
+    username: user?.username,
     rating: starRating,
     title: "",
     message: ""
@@ -24,13 +31,16 @@ const Review = ({book, visible}) => {
 
   const {title, message} = reviewForm;
 
-  useEffect(()=>{
-    setReviewForm({...reviewForm, userId: user.id, username: user.username})
-  },[user._id, user.username]);
+  useEffect(() => {
+   const total = reviewList.map(review => review.rating).reduce((a ,b) => a + b, 0);
+  if(total){
+      setAverageRating((total/reviewList.length).toFixed(2));
+    }
+  },[])
 
   useEffect(()=>{
     setReviewForm({...reviewForm, rating : starRating});
-  },[starRating]);
+  },[reviewList, starRating]);
 
 
   const handleFormChange = (e) => {
@@ -38,11 +48,14 @@ const Review = ({book, visible}) => {
   }
 
 
-  const handleAddReview = (e) => {
+  const handleAddReview = async(e) => {
     e.preventDefault();
 
-   dispatch(addReview(reviewForm));
-   
+  await dispatch(addReview(reviewForm));
+  await dispatch(loadUser());
+  alert("Review Added!")
+  handleVisible();
+
   };
 
   useEffect(() => {

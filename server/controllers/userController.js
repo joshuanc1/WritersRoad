@@ -29,7 +29,7 @@ exports.register = async(req, res, next) => {
 
 exports.login = async(req, res, next) => {
     const {username, password} = req.body;
-    const user = await User.findOne({username}).populate("userLibrary");
+    const user = await User.findOne({username}).populate("userLibrary userReviews");
 
     if(user?.username != username){
         return next(res.status(400).json({message: "Username does not exist"}));
@@ -58,7 +58,7 @@ exports.logout = async(req, res, next) => {
 
 
 exports.loadUser = async(req, res, next) => {
-    const user = await User.findOne(req.user._id).populate("userLibrary");
+    const user = await User.findOne(req.user._id).populate("userLibrary userReviews");
 
 
     res.status(200).json({

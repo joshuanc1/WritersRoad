@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_REVIEW_FAILED, ADD_REVIEW_REQUEST, ADD_REVIEW_SUCCESS, BOOK_REVIEW_LIST_REQUEST, BOOK_REVIEW_LIST_SUCCESS, BOOK_REVIEW_LIST_FAILED } from "../variables/reviewVariables"
+import { ADD_REVIEW_FAILED, ADD_REVIEW_REQUEST, ADD_REVIEW_SUCCESS, BOOK_REVIEW_LIST_REQUEST, BOOK_REVIEW_LIST_SUCCESS, BOOK_REVIEW_LIST_FAILED, DELETE_REVIEW_REQUEST, DELETE_REVIEW_SUCCESS, DELETE_REVIEW_FAILED } from "../variables/reviewVariables"
 
 
 
@@ -49,6 +49,25 @@ export const getListOfReviews = (bookISBN) => async(dispatch) => {
     } catch (error) {
         dispatch({
             type: BOOK_REVIEW_LIST_FAILED,
+            payload: error.response.data.message
+        })
+    }
+}
+
+export const deleteReview = (id) => async(dispatch) => {
+    try{
+        dispatch({type: DELETE_REVIEW_REQUEST});
+
+        const {data} = await axios.delete(`http://localhost:3001/api/review/${id}`);
+
+        dispatch({
+            type: DELETE_REVIEW_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: DELETE_REVIEW_FAILED,
             payload: error.response.data.message
         })
     }

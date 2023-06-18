@@ -9,9 +9,10 @@ import Review from '../Review/Review';
 const BookDetails = () => {
 
     const {book, loading} = useSelector(state => state.book);
-    const {isAuthenticated} = useSelector(state => state.user);
+    const {isAuthenticated, user} = useSelector(state => state.user);
     const [rating, setRating] = useState(0);
     const [visible, setVisible] = useState(false);
+    const [averageRating, setAverageRating] = useState(0);
 
     const handleVisible =() => {
         if(visible) {
@@ -33,8 +34,8 @@ const BookDetails = () => {
                 <div className='book_detail-info'>
                     <h1>{book.title}</h1>
                     <div className='book_detail-rating'>
-                        <Rating rating={rating} onRating={(rate) => setRating(rate)}></Rating>
-                        <div>Rating: {rating}</div>
+                        <Rating rating={averageRating}></Rating>
+                        <div>Rating: {averageRating}</div>
                     </div>
                     <div>{book.authors}</div>
                     <div>{book.comment} of {book.title}</div>
@@ -49,7 +50,7 @@ const BookDetails = () => {
                 <div className='addReview-btn' onClick={handleVisible} >Write a Review</div>
                 }
                 
-                <Review visible={visible} book={book}/>
+                <Review visible={visible} book={book} user={user} handleVisible={handleVisible} setAverageRating={setAverageRating}/>
                 
             </div>
         

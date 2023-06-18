@@ -1,7 +1,8 @@
 .library_header-background{
-    background-image: url('../../assets/lib1.jpg');
-    height: 100vh;
+    background-image: url('../../assets/lib2.jpg');
+    height: 75vh;
     padding-top: 10rem;
+    background-size: cover;
   
 }
 

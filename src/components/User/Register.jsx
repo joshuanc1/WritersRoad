@@ -33,7 +33,7 @@ const Register = () => {
         }
     }
 
-    const handleRegister = (e) => {
+    const handleRegister = async(e) => {
         e.preventDefault();
 
         const restrictions = /^[a-z0-9_.-]{6,20}$/igm;

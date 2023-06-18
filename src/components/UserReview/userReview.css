@@ -1,0 +1,28 @@
+.user_review-header {
+    background-image: url('../../assets/lib5.jpg');
+    height: 200px;
+    background-size: contain;
+}
+
+.user_review-inner-container{
+    background-color: black;
+    min-height: min-content;
+    display: grid;
+    padding: 1em;
+    gap: 1em;
+}
+
+.review_container{
+    color: white;
+    display: flex;
+    gap: 1rem;
+    padding-left: 1rem;
+}
+
+.review_container div:nth-child(2){
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+}
+.review_container div:nth-child(3){
+    color: rgb(255, 235, 121);
+}

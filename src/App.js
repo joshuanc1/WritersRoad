@@ -9,9 +9,7 @@ import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import AuthRoute from './AuthRoute/AuthRoute';
 import BookDetails from './components/BookDetails/BookDetails';
-import {useDispatch, useSelector} from 'react-redux';
-import { useEffect } from 'react';
-import {loadUser} from './actions/userActions';
+import UserReview from './components/UserReview/UserReview';
 
 
 
@@ -19,13 +17,6 @@ import {loadUser} from './actions/userActions';
 
 
 function App() {
-
-  /*const dispatch = useDispatch();
- 
-
-  useEffect(()=> {
-    dispatch(loadUser())
-  },[dispatch]);*/
 
 
   return (
@@ -42,13 +33,19 @@ function App() {
           <Route path='/library' element= {
             <AuthRoute>
               <Library/> 
-          </AuthRoute>
+            </AuthRoute>
             }
           />
           
           <Route path='/search' element={<Search/> } />
           <Route path='/review' element={<Review/> } />
           <Route path='/book/:isbn' element={<BookDetails/> } />
+          <Route path='/me/reviews' element={
+            <AuthRoute>
+              <UserReview/> 
+            </AuthRoute>
+            }
+          />
         </Routes>
       </Router>
     </div>

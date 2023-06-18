@@ -2,8 +2,10 @@ import React, {useState,useMemo} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar} from '@fortawesome/free-solid-svg-icons';
 
-const Rating = ({rating, onRating}) => {
+const Rating = ({rating, onRating = undefined}) => {
     const [hoverRating, setHoverRating] = useState(0);
+
+    
 
     const getColor= (index) => {
         if(hoverRating >= index){
@@ -21,7 +23,7 @@ const Rating = ({rating, onRating}) => {
                 key={idx}
                 icon={faStar}
                 color={getColor(idx)}
-                onClick = {() => onRating(idx)}
+                onClick = {!onRating ? null : () => onRating(idx)}
                 style={{color: getColor(idx)}}
                 onMouseEnter={()=>setHoverRating(idx)}
                 onMouseLeave={()=> setHoverRating(0)}          
