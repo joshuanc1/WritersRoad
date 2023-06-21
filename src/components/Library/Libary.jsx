@@ -26,15 +26,8 @@ const Libary = () => {
       <h1 className='library_title'>My Library</h1>
       <p>Update your library and add Reviews!</p>
 
-      <div className='diagonal'>
+     
       <div className='library_outer-container'>
-
-      <div className='profile-container'>
-        <div className='profile-inner'>
-        <h2>{user.name}</h2>
-        <div>{user.username}</div>
-        </div>
-      </div>
 
       <div className='book-library-container'>
     
@@ -42,7 +35,7 @@ const Libary = () => {
           
           <div className='book_box' key={book.isbn[0]}>
               <div>{book.title}</div>
-              <img onClick={() =>handleReview(book.isbn[0])} style={{width: 200, height: 300}} src={`https://covers.openlibrary.org/b/id/${book.cover}-L.jpg`} alt="book-cover" />
+              <img onClick={() =>handleReview(book.isbn[0])} className="book_img" src={`https://covers.openlibrary.org/b/id/${book.cover}-L.jpg`} alt="book-cover" />
 
               <div className='remove' onClick={()=> handleRemove(book._id)}>remove from library</div>
           </div>
@@ -56,7 +49,7 @@ const Libary = () => {
 
       </div>
       </div>
-      </div>
+    
     </div>
   )
 }

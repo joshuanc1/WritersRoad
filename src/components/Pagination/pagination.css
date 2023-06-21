@@ -14,3 +14,14 @@
     border: solid green 2px;
     color: green;
 }
+
+@media only screen and (max-width: 815px) {
+    .pagination{
+        font-size: .8rem;
+    }
+
+    .page_number{
+        padding: 5px 10px;
+    }
+  
+}

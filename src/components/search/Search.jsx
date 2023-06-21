@@ -30,6 +30,7 @@ const Search = () => {
         setCurrentBooks(books.slice(indexOfFirstBook, indexOfLastBook));
     },[books, currentPage, booksPerPage])
 
+
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
@@ -44,7 +45,7 @@ const Search = () => {
                 <h1>Search For Various Books</h1>
                 <p>Enter the title of a book and add it to your own library or review them!</p>
                 <form className='search-input-container' onSubmit={handleSearch}>
-                    <input className='search-input' type="text" placeholder='Search here' value={searchWord} onChange={(e) => setSearchWord(e.target.value)}/>
+                    <input required className='search-input' type="text" placeholder='Search here' value={searchWord} onChange={(e) => setSearchWord(e.target.value)}/>
                     <button type='submit' className='search-input-button'>
                         <FaSearch/>
                     </button>

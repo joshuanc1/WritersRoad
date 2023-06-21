@@ -10,6 +10,7 @@ import Navbar from './components/Navbar/Navbar';
 import AuthRoute from './AuthRoute/AuthRoute';
 import BookDetails from './components/BookDetails/BookDetails';
 import UserReview from './components/UserReview/UserReview';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -47,6 +48,7 @@ function App() {
             }
           />
         </Routes>
+        <Footer/>
       </Router>
     </div>
     

@@ -10,6 +10,7 @@
 
 .book-container-outer img{
     transition: transform .5s;
+    max-width: 150px;
 }
 
 .book-container-outer img:hover {
@@ -21,6 +22,7 @@
     flex-direction: column;
     padding: 0 2rem;
     gap: 1rem;
+    flex:1;
 }
 
 .book-actions {
@@ -56,4 +58,47 @@
 
 .book-review_link:hover{
     color: rgb(1, 149, 1);
+}
+
+@media only screen and (max-width: 815px) {
+    .book-information >div:not(:first-of-type){
+       display: none;
+    }
+
+    .book-actions button{
+        padding: 5px 10px;
+        font-size: .8rem;
+        
+    }
+    
+}
+
+@media only screen and (max-width: 525px){
+    .book-information> div{
+        display: none;
+        
+    }
+
+    .book-information > h3 {
+        position: absolute;
+        font-size: 1rem;
+        left: 30px;
+    }
+
+    .book-container-outer > img {
+        margin-top: 20px;
+    }
+    .book-container-outer{
+        max-width: 100vw;
+    }
+
+    .star-container{
+        display: none;
+    }
+
+
+}
+
+@media only screen and (ma) {
+    
 }

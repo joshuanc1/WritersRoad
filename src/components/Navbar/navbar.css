@@ -1,7 +1,7 @@
 .navbar-container{
     display: flex;
     align-items: center;
-    height: 150px;
+    height: 100px;
     padding: 0 2rem;
     color: whitesmoke;
     font-size: 1.15rem;
@@ -9,9 +9,11 @@
     right: 0;
     top: 0;
     left: 0;
+    display: flex;
 }
 .black{
-    background-color: black;
+    background-image: url('../../assets//navbarWood.jpg');
+    background-size: cover;
 }
 
 .navbar-container img{
@@ -48,3 +50,87 @@
     font-size: 1.15rem;
     border: none;
 }
+
+.hamburger{
+    font-size: 2rem;
+    display: none;
+}
+
+.navbar_menu{
+    background-color: #191f1f;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 75px;
+    left:0;
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: slide .5s;
+    display: none;
+    z-index: 4;
+}
+
+
+@keyframes slide {
+    0%{
+        left: 100%;
+    }
+    100%{
+        left: 0;
+    }
+}
+
+
+.navbar_menu div:first-child{
+    padding-bottom: 2rem;
+}
+
+.navbar_menu > li:hover{
+    color: #8bcece;
+}
+
+
+
+
+
+@media only screen and (max-width: 1025px) {
+  
+
+    .navbar-container{
+        font-size: 0.8rem;
+    }
+
+}
+
+@media only screen and (max-width: 815px) {
+
+    .navbar-links{
+        display: none;
+    }
+
+    .navbar-user-button{
+        display: none;
+    }
+
+    .navbar-logout{
+        display: none;
+    }
+    .navbar-container h2{
+        flex: 1;
+    }
+
+    .hamburger{
+        display: inline-block;
+    }
+    .navbar_menu{
+        display: flex;
+    }
+
+
+    
+}
+

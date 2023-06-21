@@ -15,9 +15,6 @@ const Review = ({book, visible, user, handleVisible, setAverageRating}) => {
   const [starRating, setStarRating] = useState(0);
   
 
-
-
-
   const [reviewForm, setReviewForm] = useState({
     userId: user?._id,
     bookId: book._id,
@@ -32,20 +29,21 @@ const Review = ({book, visible, user, handleVisible, setAverageRating}) => {
   const {title, message} = reviewForm;
 
   useEffect(() => {
-   const total = reviewList.map(review => review.rating).reduce((a ,b) => a + b, 0);
-  if(total){
+    const total = reviewList.map(review => review.rating).reduce((a ,b) => a + b, 0);
+    if(total){
       setAverageRating((total/reviewList.length).toFixed(2));
     }
-  },[])
+
+  },[reviewList])
 
   useEffect(()=>{
     setReviewForm({...reviewForm, rating : starRating});
-  },[reviewList, starRating]);
+  },[starRating]);
 
 
   const handleFormChange = (e) => {
    setReviewForm({...reviewForm, [e.target.name] : e.target.value})
-  }
+  };
 
 
   const handleAddReview = async(e) => {
@@ -83,7 +81,7 @@ const Review = ({book, visible, user, handleVisible, setAverageRating}) => {
                 <Rating rating={review.rating}></Rating>
                 <div>{review.title}</div>
                 <div>{review.message}</div>
-                <div>{review.username}</div>
+                <div className='reviews-username'>{review.username}</div>
               </div>
             ))
           :

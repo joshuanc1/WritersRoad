@@ -1,9 +1,44 @@
 .review_form-container form{
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    gap: 1rem;
+    background: radial-gradient(circle at 0% 83%, #e4e4e4 0%, #e3ded2 49%, #e4e4e4 100%);
+    position: relative;
+    width: 75vw;
+    left: 10%;
+    top: 10%;
+    border: 2px solid black;
+}
+
+.review_form-container form :nth-child(even) {
+    margin-top: 1.5rem;
+}
+
+.review_form-container > input {
+    padding: 1rem;
+    border-radius: 35px;
+    border: 2px solid black;
+}
+
+.review_form-container button:hover{
+    background-color: #3c4e23;
+    color: white;
 }
 
 .reviews{
-    background-color: white;
+    background: radial-gradient(circle at 0% 83%, #e4e4e4 0%, #e3ded2 49%, #e4e4e4 100%);
+    margin: 1rem;
+    padding: 1rem;
 }
+
+.reviews div:first-child{
+    margin-bottom: 1rem;
+}
+
+.reviews-username{
+    margin-top: 1rem;
+    font-weight: 200;
+}
+
