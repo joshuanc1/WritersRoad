@@ -1,5 +1,6 @@
 {
   "name": "writers",
+  "homepage": "http://writersroad.online",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
