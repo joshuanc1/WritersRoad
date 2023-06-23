@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "tsc",
-    "start": "node build/index.js",
+    "start": "node build/index.html",
     "dev": "nodemon server.js"
   },
   "author": "",
