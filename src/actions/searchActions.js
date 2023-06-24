@@ -1,5 +1,6 @@
 import { SEARCH_BOOKS_FAILED, SEARCH_BOOKS_SUCCESS, SEARCH_BOOKS_REQUEST, SINGLE_BOOK_REQUEST, SINGLE_BOOK_SUCCESS, SINGLE_BOOK_FAILED, ADD_BOOK_LIBRARY_REQUEST, ADD_BOOK_LIBRARY_SUCCESS, ADD_BOOK_LIBRARY_FAILED, REMOVE_BOOK_LIBRARY_REQUEST, REMOVE_BOOK_LIBRARY_SUCCESS, REMOVE_BOOK_LIBRARY_FAILED } from "../variables/searchVariables";
 import axios from "axios";
+import {API_URL} from './config'
 
 axios.defaults.withCredentials = true;
 
@@ -15,7 +16,7 @@ export const getSearchedBooks = (title) => async(dispatch) => {
         }
 
         const {data} = await axios.get(
-            `http://localhost:3001/api/search?title=${title}`,
+            `${API_URL}/api/search?title=${title}`,
             headerData
         )
 
@@ -45,7 +46,7 @@ export const getSingleBook = (isbn) => async(dispatch) => {
 
 
         const {data} = await axios.get(
-            `http://localhost:3001/api/book/${isbn}`,
+            `${API_URL}/api/book/${isbn}`,
             headerData
         )
     
@@ -69,7 +70,7 @@ export const addBookToLibrary = (book) => async(dispatch) => {
 
     
         const {data} = await axios.post(
-            'http://localhost:3001/api/library',
+            `${API_URL}/api/library`,
             book,
         );
 
@@ -95,7 +96,7 @@ export const removeBookFromLibrary = (id) => async(dispatch) => {
      
 
         const {data} = await axios.delete(
-            'http://localhost:3001/api/library',
+            `${API_URL}/api/library`,
             {data: {book:id}},
             
         )
