@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(urlencoded({extended: true}));
 app.use(cookie());
-app.use(cors({origin: "https://writersroad.online", credentials: true}));
+app.use(cors({origin: "*", credentials: true}));
 
 app.use(logger);
 
