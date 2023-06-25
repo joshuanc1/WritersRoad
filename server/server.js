@@ -30,7 +30,7 @@ if(process.env.NODE_ENV === 'production'){
     app.use(express.static(path.join(__dirname, '/build')));
 
     app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, '/build', 'index.html'));
+        res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
     })
 
 } else {
@@ -49,6 +49,20 @@ const reviewRouter = require('./routes/reviewRoute');
 app.use('/user', userRouter);
 app.use('/api', searchRouter);
 app.use('/api', reviewRouter);
+
+
+
+
+app.use((err, req, res, next) => {
+    // Log the error
+    console.error(err);
+  
+    // Set the response status code
+    res.status(500).json({message: `${err}`});
+  
+    // Send an error response
+
+  });
 
 
 
