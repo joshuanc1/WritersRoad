@@ -54,9 +54,9 @@ const Search = () => {
         </div>
         </div>
         {loading ? <Loading/> :
-        <div className='search_container-books'>
+        <div className='search_container-books'>    
                                              
-            {books.length > 0 ?
+            {books?.length > 0 ?
                 currentBooks.map((book)=> {
                     return <Book key={book._id} book={book} isAuthenticated={isAuthenticated} />
                 })
