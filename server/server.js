@@ -20,7 +20,12 @@ app.use(cors({origin: "*", credentials: true}));
 
 app.use(logger);
 
-app.use(express.static(path.resolve(__dirname, '..', '/public')));
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, '..', 'build')));
+    
+} else {
+    app.use(express.static(path.resolve(__dirname, '..', '/public')));
+}
 
 if(process.env.NODE_ENV != 'production'){
     require('dotenv').config({path: './config/.env'});
@@ -31,6 +36,7 @@ if(process.env.NODE_ENV != 'production'){
 const userRouter = require('./routes/userRoute');
 const searchRouter = require('./routes/booksRoute');
 const reviewRouter = require('./routes/reviewRoute');
+const { produceWithPatches } = require('immer');
 
 app.use('/user', userRouter);
 app.use('/api', searchRouter);
