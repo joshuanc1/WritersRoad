@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ADD_REVIEW_FAILED, ADD_REVIEW_REQUEST, ADD_REVIEW_SUCCESS, BOOK_REVIEW_LIST_REQUEST, BOOK_REVIEW_LIST_SUCCESS, BOOK_REVIEW_LIST_FAILED, DELETE_REVIEW_REQUEST, DELETE_REVIEW_SUCCESS, DELETE_REVIEW_FAILED } from "../variables/reviewVariables"
-import {API_URL} from './config'
+import { API_URL } from './config'
 
 
 export const addReview = (reviewData) => async(dispatch) => {
