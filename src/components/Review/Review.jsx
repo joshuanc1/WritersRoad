@@ -75,7 +75,7 @@ const Review = ({book, visible, user, handleVisible, setAverageRating}) => {
       </div>
       }
       <div className='review_list_users'>
-          {reviewList.length > 0 ? 
+          {reviewList?.length > 0 ? 
             reviewList.map(review => (
               <div className="reviews" key={review._id}>
                 <Rating rating={review.rating}></Rating>

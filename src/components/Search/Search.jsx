@@ -64,7 +64,7 @@ const Search = () => {
                 <p className='no-books'>No Books Found</p>
             }
             
-            <Pagination booksPerPage={booksPerPage} totalBooks={books.length} paginate={paginate} currentPage={currentPage}/>
+            <Pagination booksPerPage={booksPerPage} totalBooks={books?.length} paginate={paginate} currentPage={currentPage}/>
             
         </div>
         }
