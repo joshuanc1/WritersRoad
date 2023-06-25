@@ -20,10 +20,13 @@ app.use(cors({origin: "*", credentials: true}));
 
 app.use(logger);
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__dirname, '..', 'build')));
 
-    app.get("*", (req,res) => {
+
+if(process.env.NODE_ENV === 'production'){
+    __dirname = path.resolve();
+    app.use(express.static(path.join(__dirname, '/build')));
+
+    app.get("*", (req, res) => {
         res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
     })
 
@@ -40,7 +43,7 @@ if(process.env.NODE_ENV != 'production'){
 const userRouter = require('./routes/userRoute');
 const searchRouter = require('./routes/booksRoute');
 const reviewRouter = require('./routes/reviewRoute');
-const { produceWithPatches } = require('immer');
+
 
 app.use('/user', userRouter);
 app.use('/api', searchRouter);
