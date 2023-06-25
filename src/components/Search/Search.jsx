@@ -12,16 +12,16 @@ import Loading from '../Loading/Loading';
 const Search = () => {
     const dispatch = useDispatch();
     const [searchWord, setSearchWord] = useState("");
-    const { books, loading } = useSelector(state => state.books);
+    const { books, loading} = useSelector(state => state.books);
     const { isAuthenticated } = useSelector(state => state.user);
     const [currentPage, setCurrentPage] = useState(1);
     const [booksPerPage] = useState(10);
     const [currentBooks, setCurrentBooks] = useState([]);
    
  
-    const handleSearch = async(e) => {
+    const handleSearch = (e) => {
         e.preventDefault();
-        await dispatch(getSearchedBooks(searchWord));
+        dispatch(getSearchedBooks(searchWord));
         setCurrentPage(1);
     }
     useEffect(()=>{

@@ -29,10 +29,20 @@ exports.findBooks = async(req, res, next) => {
             }
         )}
 
-    return res.status(200).json({
-        success: true,
-        books: matchedBooks,
-    })
+        
+    if(matchedBooks) {
+        return res.status(200).json({
+            success: true,
+            books: matchedBooks,
+        })
+    }else {
+        return res.status(401).json({
+            success: false
+            }
+            )
+    }
+
+    
 }
 
 exports.getBookDetail = async(req, res, next) => {
