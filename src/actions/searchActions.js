@@ -9,15 +9,10 @@ export const getSearchedBooks = (title) => async(dispatch) => {
     try{
         dispatch({type: SEARCH_BOOKS_REQUEST});
 
-        const headerData = {
-            headers: {
-                "Content-type": "application/json"
-            }
-        }
+       
 
         const {data} = await axios.get(
             `${API_URL}/api/search?title=${title}`,
-            headerData
         )
 
 
