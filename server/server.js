@@ -41,7 +41,7 @@ app.use('/api', reviewRouter);
 
 
 
-/*app.use((err, req, res, next) => {
+app.use((err, req, res, next) => {
     // Log the error
     console.error(err);
   
@@ -50,7 +50,7 @@ app.use('/api', reviewRouter);
   
     // Send an error response
 
-  });*/
+  });
 
   if(process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, './build')));
