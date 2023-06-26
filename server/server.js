@@ -41,7 +41,7 @@ app.use('/api', reviewRouter);
 
 
 
-app.use((err, req, res, next) => {
+/*app.use((err, req, res, next) => {
     // Log the error
     console.error(err);
   
@@ -50,10 +50,10 @@ app.use((err, req, res, next) => {
   
     // Send an error response
 
-  });
+  });*/
 
   if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/build')));
+    app.use(express.static(path.join(__dirname, './build')));
 
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
