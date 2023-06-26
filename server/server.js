@@ -17,7 +17,8 @@ app.use(express.json());
 app.use(urlencoded({extended: true}));
 app.use(cookie());
 app.use(cors({origin: "*", credentials: true}));
-
+app.use('/public', express.static('public'));
+app.use(logger);
 
 
 if(process.env.NODE_ENV != "production") {
