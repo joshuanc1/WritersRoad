@@ -1,16 +1,16 @@
 const express = require('express');
-const PORT = process.env.PORT || 3001;
+
 const cookie = require('cookie-parser');
 const cors = require('cors');
 const { urlencoded } = require('express');
 const {logger} = require('./middleware/logEvent');
-const connectToDatabase = require('./config/database');
 const path = require('path');
-const mongoose = require('mongoose');
 
 
+require('dotenv').config();
 
-
+const connectToDatabase = require('./database');
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -23,7 +23,7 @@ app.use('/public', express.static(path.join(__dirname, '..' , '/public')));
 
 
 
-require('dotenv').config({path: '/server/config/config.env'});
+
 
 
 
