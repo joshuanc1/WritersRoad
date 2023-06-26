@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 exports.findBooks = async(req, res, next) => {
     const title = req.query.title;
 
-    const { data } = await axios.get(`http://openlibrary.org/search.json?title=${title}&jscmd=details`);
+    const { data } = await axios.get(`https://openlibrary.org/search.json?title=${title}&jscmd=details`);
     
     const {docs} = data;
     
@@ -29,17 +29,17 @@ exports.findBooks = async(req, res, next) => {
             }
         )}
 
-        
+
     if(matchedBooks) {
+        console.log(matchedBooks);
         return res.status(200).json({
             success: true,
             books: matchedBooks,
         })
-    }else {
+    } else {
         return res.status(401).json({
             success: false
-            }
-            )
+         })
     }
 
     
