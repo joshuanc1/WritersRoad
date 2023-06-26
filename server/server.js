@@ -6,7 +6,7 @@ const { urlencoded } = require('express');
 const {logger} = require('./middleware/logEvent');
 const connectToDatabase = require('./config/database');
 const path = require('path');
-
+const mongoose = require('mongoose');
 
 
 
@@ -19,13 +19,11 @@ app.use(express.json());
 app.use(urlencoded({extended: true}));
 app.use(cookie());
 app.use(cors({origin: "*", credentials: true}));
-app.use('/public', express.static('../public'));
+app.use('/public', express.static(path.join(__dirname, '..' , '/public')));
 
 
 
-if(process.env.NODE_ENV != "production") {
-  require('dotenv').config({path: 'backend/config/config.env'});
-}
+require('dotenv').config({path: 'server/config/config.env'});
 
 
 
