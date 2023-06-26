@@ -23,7 +23,7 @@ app.use('/public', express.static(path.join(__dirname, '..' , '/public')));
 
 
 
-require('dotenv').config({path: 'server/config/config.env'});
+require('dotenv').config({path: '/server/config/config.env'});
 
 
 
