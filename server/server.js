@@ -17,25 +17,6 @@ app.use(express.json());
 app.use(urlencoded({extended: true}));
 app.use(cookie());
 app.use(cors({origin: "*", credentials: true}));
-app.use('/public', express.static('public'));
-app.use(logger);
-
-if(process.env.NODE_ENV != 'production'){
-    require('dotenv').config({path: './config/.env'});
-}
-
-
-
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__dirname, '/build')));
-
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-    })
-
-} else {
-    app.use(express.static(path.resolve(__dirname, '..', '/public')));
-}
 
 
 

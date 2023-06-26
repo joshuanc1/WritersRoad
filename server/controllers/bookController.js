@@ -11,6 +11,7 @@ exports.findBooks = async(req, res, next) => {
 
     const data = await axios.get(`https://openlibrary.org/search.json?title=${title}&jscmd=details`);
     
+    console.log(data);
     const {docs} = data;
     
 

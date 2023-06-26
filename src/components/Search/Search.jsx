@@ -19,9 +19,9 @@ const Search = () => {
     const [currentBooks, setCurrentBooks] = useState([]);
    
  
-    const handleSearch = (e) => {
+    const handleSearch = async(e) => {
         e.preventDefault();
-        dispatch(getSearchedBooks(searchWord));
+        await dispatch(getSearchedBooks(searchWord));
         setCurrentPage(1);
     }
     useEffect(()=>{

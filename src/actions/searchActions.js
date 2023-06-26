@@ -26,7 +26,8 @@ export const getSearchedBooks = (title) => async(dispatch) => {
             type: SEARCH_BOOKS_SUCCESS,
             payload: data.books
         })
-        
+        console.log(data);
+
     } catch (error){
         dispatch({
             type: SEARCH_BOOKS_FAILED,
