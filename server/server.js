@@ -20,6 +20,12 @@ app.use(cors({origin: "*", credentials: true}));
 
 
 
+if(process.env.NODE_ENV != "production") {
+  require('dotenv').config({path: 'backend/config/config.env'});
+}
+
+
+
 
 
 const userRouter = require('./routes/userRoute');
@@ -44,6 +50,14 @@ app.use((err, req, res, next) => {
     // Send an error response
 
   });
+
+  if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'build')));
+
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+    })
+  }
 
 
 
