@@ -11,11 +11,11 @@ export const getSearchedBooks = (title) => async(dispatch) => {
 
        
 
-        const {data} = await axios.get(
+        const { data } = await axios.get(
             `${API_URL}/api/search?title=${title}`,
         )
 
-
+        console.log(data);
 
         dispatch({
             type: SEARCH_BOOKS_SUCCESS,

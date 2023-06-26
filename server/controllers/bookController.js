@@ -7,12 +7,12 @@ const mongoose = require('mongoose');
 
 
 exports.findBooks = async(req, res, next) => {
-    try{
+  
     const title = req.query.title;
 
     const data = await axios.get(`https://openlibrary.org/search.json?title=${title}&jscmd=details`);
     
-    console.log(data);
+   
     const {docs} = data;
     
 
@@ -30,23 +30,13 @@ exports.findBooks = async(req, res, next) => {
                 })
             }
         )}
+        console.log(matchedBooks)
 
-
-    if(matchedBooks) {
-        console.log(matchedBooks);
+  
         return res.status(200).json({
             success: true,
             books: matchedBooks,
         })
-    } else {
-        return res.status(401).json({
-            success: false
-         })
-    }
-    } catch (err) {
-        console.log(err);
-    }
-
     
 }
 
