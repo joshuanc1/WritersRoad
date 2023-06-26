@@ -17,8 +17,8 @@ app.use(express.json());
 app.use(urlencoded({extended: true}));
 app.use(cookie());
 app.use(cors({origin: "*", credentials: true}));
-app.use('/public', express.static('public'));
-app.use(logger);
+//app.use('/public', express.static('public'));
+
 
 
 if(process.env.NODE_ENV != "production") {
@@ -52,7 +52,7 @@ app.use((err, req, res, next) => {
 
   });
 
-  if(process.env.NODE_ENV === 'production') {
+  /*if(process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '/server/build')));
 
     app.get('*', (req, res) => {
@@ -60,7 +60,7 @@ app.use((err, req, res, next) => {
     })
   }
 
-
+*/
 
 
 
