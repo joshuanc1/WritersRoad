@@ -1,7 +1,6 @@
 {
   "name": "writers",
-  "homepage": ".",
-  "proxy": "http://localhost:3001",
+  "homepage": "https://writersroad.online",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
