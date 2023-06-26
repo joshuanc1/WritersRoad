@@ -10,6 +10,8 @@ const path = require('path');
 
 
 
+
+
 const app = express();
 
 
@@ -17,7 +19,7 @@ app.use(express.json());
 app.use(urlencoded({extended: true}));
 app.use(cookie());
 app.use(cors({origin: "*", credentials: true}));
-app.use('/public', express.static('public'));
+app.use('/public', express.static('../public'));
 
 
 
@@ -53,7 +55,8 @@ app.use((err, req, res, next) => {
   });
 
   if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, './build')));
+   
+    app.use(express.static(path.join(__dirname, 'build')));
 
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
