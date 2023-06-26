@@ -3,7 +3,6 @@ const express = require('express');
 const cookie = require('cookie-parser');
 const cors = require('cors');
 const { urlencoded } = require('express');
-const {logger} = require('./middleware/logEvent');
 const path = require('path');
 
 
@@ -19,7 +18,7 @@ app.use(express.json());
 app.use(urlencoded({extended: true}));
 app.use(cookie());
 app.use(cors({origin: "*", credentials: true}));
-app.use('/public', express.static(path.join(__dirname, '..' , '/public')));
+app.use('/public', express.static('public'));
 
 
 
