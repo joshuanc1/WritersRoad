@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 
 exports.findBooks = async(req, res, next) => {
+    try{
     const title = req.query.title;
 
     const data = await axios.get(`https://openlibrary.org/search.json?title=${title}&jscmd=details`);
@@ -41,6 +42,9 @@ exports.findBooks = async(req, res, next) => {
         return res.status(401).json({
             success: false
          })
+    }
+    } catch (err) {
+        console.log(err);
     }
 
     
